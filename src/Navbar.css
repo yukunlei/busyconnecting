@@ -1,0 +1,76 @@
+/* Navbar Styles */
+.navbar {
+    background-color: #F5F5D6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin-right: 20px;
+    position: relative;
+}
+
+.navbar li:last-child {
+    margin-right: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2em;
+}
+
+.nav-link:hover {
+    color: #FF5733; /* Change this to desired hover color */
+}
+
+button[type="primary"] {
+    background-color: #FF0000;
+    color: #FFF;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+button[type="primary"]:hover {
+    background-color: #D32F2F; /* Change this to desired hover color */
+}
+
+button[type="primary"] a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+button[type="primary"] a:hover {
+    color: #FFF;
+}
+
+/* Adjust the container for alignment */
+.navbar-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000;
+}
