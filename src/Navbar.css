@@ -37,7 +37,7 @@
     color: #FF5733; /* Change this to desired hover color */
 }
 
-button[type="primary"] {
+button {
     background-color: #FF0000;
     color: #FFF;
     font-weight: bold;
@@ -46,16 +46,16 @@ button[type="primary"] {
     border-radius: 10px;
 }
 
-button[type="primary"]:hover {
+button:hover {
     background-color: #D32F2F; /* Change this to desired hover color */
 }
 
-button[type="primary"] a {
+button a {
     color: #FFF;
     text-decoration: none;
 }
 
-button[type="primary"] a:hover {
+button a:hover {
     color: #FFF;
 }
 

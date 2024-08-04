@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown, Button, Space } from 'antd';
+import { Menu, Dropdown, Space } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+import Button from './Button';
 import './Navbar.css';
 
 const menu = (
@@ -40,9 +41,7 @@ function Navbar() {
                     </li>
                     <li><Link to="/blogs" className="nav-link">Blogs</Link></li>
                     <li>
-                        <Button type="primary">
-                            <Link to="/contact-us">Contact Us</Link>
-                        </Button>
+                        <Button text="Contact Us" />
                     </li>
                 </ul>
             </div>
