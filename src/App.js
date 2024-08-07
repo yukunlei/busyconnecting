@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
+import YellowBox from "./YellowBox";
+import SubscribeNewsletter from "./SubscribeNewsletter";
 
 
 function App() {
@@ -17,8 +19,17 @@ function App() {
                     <Route path="/blogs" component={() => <div>Blogs Page</div>} />
                     <Route path="/contact-us" component={() => <div>Contact Us Page</div>} />
                 </Routes>
+
+                <YellowBox title={"About Us"} texts={"Busy Connecting is a renowned organization supporting businesses of all sizes.\n" +
+                    "                We’ve aided numerous industries in securing essential funding for growth. Our\n" +
+                    "                experienced team, led by founder Robyn Baker with over 40 years of grant and\n" +
+                    "                tender expertise, is widely recognized."}>
+                </YellowBox>
+                <SubscribeNewsletter />
             </div>
+
         </Router>
+
     );
 }
 

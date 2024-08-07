@@ -1,0 +1,24 @@
+.subscribe-newsletter {
+    background-color: #FFF502;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 50px 0;
+    border-radius: 8px;
+}
+
+.subscribe-newsletter h2 {
+    margin-bottom: 10px;
+}
+
+.subscribe-newsletter form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subscribe-newsletter input,
+.subscribe-newsletter button {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
