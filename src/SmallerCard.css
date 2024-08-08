@@ -1,0 +1,33 @@
+
+.smallerCard {
+    border: 5px solid black;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #FFEB3B;
+    display: flex;
+    flex-direction: column;
+    width: 295px;
+    height: 386px;
+}
+
+.smallerCard-image {
+    width: 295px;
+    height: 191px;
+    border-radius: 50px;
+    border: 5px solid black;
+    background: white;
+}
+
+
+.smallerCard-content {
+    padding: 10px;
+}
+
+.smallerCard h3 {
+    margin: 0 0 5px;
+}
+
+.smallerCard p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}

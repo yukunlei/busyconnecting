@@ -1,0 +1,23 @@
+.red-button {
+    background-color: #DB0F45;
+    color: #FEFFCD;
+    border: 5px solid black;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.red-button:hover {
+    background-color: #E04343;
+}
+
+.red-button:active {
+    background-color: #CC3B3B;
+}
+
+.red-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 75, 75, 0.5);
+}

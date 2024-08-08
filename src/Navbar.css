@@ -1,6 +1,6 @@
 /* Navbar Styles */
 .navbar {
-    background-color: #F5F5D6;
+    background-color: #FEFFCD;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,6 +8,7 @@
     border-radius: 20px;
     font-family: 'Arial', sans-serif;
     font-weight: bold;
+    box-shadow: 5px 10px #888888;
 }
 
 .navbar ul {

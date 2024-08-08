@@ -1,0 +1,33 @@
+
+.card {
+    border: 5px solid black;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #FFEB3B;
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    height: 375px;
+}
+
+.card-image {
+    width: 375px;
+    height: 191px;
+    border-radius: 50px;
+    border: 5px solid black;
+    background: white;
+}
+
+
+.card-content {
+    padding: 10px;
+}
+
+.card h3 {
+    margin: 0 0 5px;
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
