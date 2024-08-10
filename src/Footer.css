@@ -1,0 +1,35 @@
+.footer {
+    background-color: #ffffe0; /* Light yellow background */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ccc;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.social-icon {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px;
+    margin: 0 10px;
+}
+
+.footer-text {
+    text-align: right;
+}
+
+.footer-text p {
+    margin: 0;
+}
