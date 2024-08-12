@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        input[type=submit] {
+            background-color: black;
+            border: none;
+            color: white;
+            font-size: large;
+            font-weight: bolder;
+            padding: 12px 50px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            float: right;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #FEFFCD;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .sidebar button {
+            width: 60%;
+            background-color: #FFF502;
+            color: black;
+            font-weight: bold;
+            border-color: black;
+            border-radius: 20px;
+            align-content: center;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .sidebar button:hover {
+            background-color: #777;
+        }
+        .container {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-row {
+            display: flex;
+            align-items: center;
+        }
+        .form-row .form-item {
+            margin-right: 20px; /* Space between items */
+        }
+        .form-group input[type="text"],
+        .form-group input[type="file"],
+        .form-group textarea,
+        .form-group select {
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Admin Page</h1>
+        <button onclick="showEditHomePage()">Home Page</button>
+        <button onclick="showEditInfoPage()">Info Page</button>
+        <button onclick="showCreateEventPage()">Create Event</button>
+        <button onclick="showCreateBlogPage()">Create Blog</button>
+        <button onclick="showEditEventPage()">Edit Event</button>
+        <button onclick="showEditBlogPage()">Edit Blog</button>
+        <button onclick="showUserDataPage()">User Data</button>
+        <button onclick="showSendNewsPage()">Send Newsletter</button>
+    </div>
+
+    <div class="container" id="editHomePage">
+        <h2 class="section-title">Edit Home</h2>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="homeTitle">Title</label>
+                    <input type="text" id="homeTitle" name="homeTitle" style="width: 100%;">
+                </div>
+                <div class="form-item">
+                    <label for="image1">Add Image 1</label>
+                    <input type="file" id="image1" name="image1">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="homeHeader">Header</label>
+                    <input type="text" id="homeHeader" name="homeHeader" style="width: 100%;">
+                </div>
+                <div class="form-item">
+                    <label for="headerVideo">Add Header Video</label>
+                    <input type="file" id="headerVideo" name="headerVideo">
+                </div>
+                <div class="form-item">
+                    <label for="image2">Add Image 2</label>
+                    <input type="file" id="image2" name="image2">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="content2">Content 2</label>
+            <textarea id="content2" name="content2"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Save">
+        </div>
+    </div>
+
+    <div class="container" id="editInfoPage" style="display:none;">
+        <h2 class="section-title">Edit Info</h2>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="infoPages">Pages</label>
+                    <select id="infoPages" name="infoPages" style="width: 100%;">
+                        <option value="tenders">Tenders</option>
+                        <option value="grants">Grants</option>
+                        <option value="sdm">Strategic Digital Marketing</option>
+                        <option value="retired">Retired</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label for="infoImage1">Add Image 1</label>
+                    <input type="file" id="infoImage1" name="infoImage1">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="infoTitle">Title</label>
+                    <input type="text" id="infoTitle" name="infoTitle" style="width: 100%;">
+                </div>
+                <div class="form-item">
+                    <label for="infoImage2">Add Image 2</label>
+                    <input type="file" id="infoImage2" name="infoImage2">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="infoContent1">Content 1</label>
+            <textarea id="infoContent1" name="infoContent1"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="infoContent2">Content 2</label>
+            <textarea id="infoContent2" name="infoContent2"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Save">
+        </div>
+    </div>
+
+    <div class="container" id="createEventPage" style="display:none;">
+        <h2 class="section-title">Create Event</h2>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="createEventPages">Title</label>
+                    <input type="text" id="eventTitle" name="eventTitle" style="width: 100%;">
+                </div>
+                <div class="form-item">
+                    <label for="eventImage">Add Image</label>
+                    <input type="file" id="eventImage" name="eventImage">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="eventDate">Event Date & Time</label>
+                    <input type="datetime-local" id="eventDate" name="eventDate" style="width: 77.5%; height: 50px;">
+                </div>
+                <div class="form-item">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="eventContent1">Content 1</label>
+            <textarea id="eventContent1" name="eventContent1"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="eventContent2">Content 2</label>
+            <textarea id="eventContent2" name="eventContent2"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Create">
+        </div>
+
+    </div>
+
+    <div class="container" id="createBlogPage" style="display:none;">
+        <h2 class="section-title">Create Blog</h2>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="createBlogPage">Title</label>
+                    <input type="text" id="blogTitle" name="blogTitle" style="width: 100%;">
+                </div>
+                <div class="form-item">
+                    <label for="blogImage">Add Image</label>
+                    <input type="file" id="blogImage" name="blogImage">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="blogDate">Blog Date & Time</label>
+                    <input type="datetime-local" id="blogDate" name="blogDate" style="width: 77.5%; height: 50px;">
+                </div>
+                <div class="form-item">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="blogContent1">Content 1</label>
+            <textarea id="blogContent1" name="blogContent1"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="blogContent2">Content 2</label>
+            <textarea id="blogContent2" name="blogContent2"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Create">
+        </div>
+
+    </div>
+
+    <div class="container" id="editEventPage" style="display:none;">
+        <h2 class="section-title">Edit Event</h2>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="eventPages">Pages</label>
+                    <select id="eventPages" name="eventPages" style="width: 200px;">
+                        <option value="event1">Event 1</option>
+                        <option value="event2">Event 2</option>
+                        <option value="event3">Event 3</option>
+                        <option value="event4">Event 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="editEventPage">Title</label>
+                    <input type="text" id="eventTitle" name="eventTitle" style="width: 100%;">
+                </div>
+                <div class="form-item">
+                    <label for="eventImage">Add Image</label>
+                    <input type="file" id="eventImage" name="eventImage">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="eventDate">Event Date a& Time</label>
+                    <input type="datetime-local" id="eventDate" name="eventDate" style="width: 77.5%; height: 50px;">
+                </div>
+                <div class="form-item">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="eventContent1">Content 1</label>
+            <textarea id="eventContent1" name="eventContent1"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="eventContent2">Content 2</label>
+            <textarea id="eventContent2" name="eventContent2"></textarea>
+        </div>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <input type="submit" value="Delete" style="background-color: red; float: left;">
+                </div>
+                <div class="form-item">
+                    <input type="submit" value="Save">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container" id="editBlogPage" style="display:none;">
+        <h2 class="section-title">Edit Blog</h2>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="blogPages">Pages</label>
+                    <select id="blogPages" name="blogPages" style="width: 200px;">
+                        <option value="blog1">Blog 1</option>
+                        <option value="blog2">Blog 2</option>
+                        <option value="blog3">Blog 3</option>
+                        <option value="blog4">Blog 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="createBlogPage">Title</label>
+                    <input type="text" id="blogTitle" name="blogTitle" style="width: 100%;">
+                </div>
+                <div class="form-item">
+                    <label for="blogImage">Add Image</label>
+                    <input type="file" id="blogImage" name="blogImage">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="blogDate">Blog Date & Time</label>
+                    <input type="datetime-local" id="blogDate" name="blogDate" style="width: 77.5%; height: 50px;">
+                </div>
+                <div class="form-item">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="blogContent1">Content 1</label>
+            <textarea id="blogContent1" name="blogContent1"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="blogContent2">Content 2</label>
+            <textarea id="blogContent2" name="blogContent2"></textarea>
+        </div>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <input type="submit" value="Delete" style="background-color: red; float: left;">
+                </div>
+                <div class="form-item">
+                    <input type="submit" value="Save">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container" id="userDataPage">
+        <h2 class="section-title">User Data</h2>
+
+        
+    </div>
+
+    <div class="container" id="sendNewsPage" style="display:none;">
+        <h2 class="section-title">Send Newsletter</h2>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item" style="flex: 1;">
+                    <label for="infoTitle">Title</label>
+                    <input type="text" id="infoTitle" name="infoTitle" style="width: 70%;">
+                    
+                </div>
+                <div class="form-item" style="float: right;">
+                    <label for="user">Select User</label>
+                    <select id="user" name="user">
+                        <option value="user1">User 1</option>
+                        <option value="user2">User 2</option>
+                        <option value="user3">User 3</option>
+                        <option value="user4">User 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+                <div class="form-item">
+                    <label for="newsImage">Add Image</label>
+                    <input type="file" id="newsImage" name="newsImage">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="newsContent">Content</label>
+            <textarea id="newsContent" name="newsContent"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Send">
+        </div>
+    </div>
+
+    <script>
+        function showEditHomePage() {
+            document.getElementById('editHomePage').style.display = 'block';
+            document.getElementById('editInfoPage').style.display = 'none';
+            document.getElementById('createEventPage').style.display = 'none';
+            document.getElementById('createBlogPage').style.display = 'none';
+            document.getElementById('editEventPage').style.display = 'none';
+            document.getElementById('userDataPage').style.display = 'none';
+            document.getElementById('sendNewsPage').style.display = 'none';
+        }
+
+        function showEditInfoPage() {
+            document.getElementById('editHomePage').style.display = 'none';
+            document.getElementById('editInfoPage').style.display = 'block';
+            document.getElementById('createEventPage').style.display = 'none';
+            document.getElementById('createBlogPage').style.display = 'none';
+            document.getElementById('editEventPage').style.display = 'none';
+            document.getElementById('userDataPage').style.display = 'none';
+            document.getElementById('sendNewsPage').style.display = 'none';
+        }
+
+        function showCreateEventPage() {
+            document.getElementById('editHomePage').style.display = 'none';
+            document.getElementById('editInfoPage').style.display = 'none';
+            document.getElementById('createEventPage').style.display = 'block';
+            document.getElementById('createBlogPage').style.display = 'none';
+            document.getElementById('editEventPage').style.display = 'none';
+            document.getElementById('editBlogPage').style.display = 'none';
+            document.getElementById('userDataPage').style.display = 'none';
+            document.getElementById('sendNewsPage').style.display = 'none';
+        }
+
+        function showCreateBlogPage() {
+            document.getElementById('editHomePage').style.display = 'none';
+            document.getElementById('editInfoPage').style.display = 'none';
+            document.getElementById('createEventPage').style.display = 'none';
+            document.getElementById('createBlogPage').style.display = 'block';
+            document.getElementById('editEventPage').style.display = 'none';
+            document.getElementById('editBlogPage').style.display = 'none';
+            document.getElementById('userDataPage').style.display = 'none';
+            document.getElementById('sendNewsPage').style.display = 'none';
+        }
+
+        function showEditEventPage() {
+            document.getElementById('editHomePage').style.display = 'none';
+            document.getElementById('editInfoPage').style.display = 'none';
+            document.getElementById('createEventPage').style.display = 'none';
+            document.getElementById('createBlogPage').style.display = 'none';
+            document.getElementById('editEventPage').style.display = 'block';
+            document.getElementById('editBlogPage').style.display = 'none';
+            document.getElementById('userDataPage').style.display = 'none';
+            document.getElementById('sendNewsPage').style.display = 'none';
+        }
+
+        function showEditBlogPage() {
+            document.getElementById('editHomePage').style.display = 'none';
+            document.getElementById('editInfoPage').style.display = 'none';
+            document.getElementById('createEventPage').style.display = 'none';
+            document.getElementById('createBlogPage').style.display = 'none';
+            document.getElementById('editEventPage').style.display = 'none';
+            document.getElementById('editBlogPage').style.display = 'block';
+            document.getElementById('userDataPage').style.display = 'none';
+            document.getElementById('sendNewsPage').style.display = 'none';
+        }
+
+        function showUserDataPage() {
+            document.getElementById('editHomePage').style.display = 'none';
+            document.getElementById('editInfoPage').style.display = 'none';
+            document.getElementById('createEventPage').style.display = 'none';
+            document.getElementById('createBlogPage').style.display = 'none';
+            document.getElementById('editEventPage').style.display = 'none';
+            document.getElementById('editBlogPage').style.display = 'none';
+            document.getElementById('userDataPage').style.display = 'block';
+            document.getElementById('sendNewsPage').style.display = 'none';
+        }
+
+        function showSendNewsPage() {
+            document.getElementById('editHomePage').style.display = 'none';
+            document.getElementById('editInfoPage').style.display = 'none';
+            document.getElementById('createEventPage').style.display = 'none';
+            document.getElementById('createBlogPage').style.display = 'none';
+            document.getElementById('editEventPage').style.display = 'none';
+            document.getElementById('editBlogPage').style.display = 'none';
+            document.getElementById('userDataPage').style.display = 'none';
+            document.getElementById('sendNewsPage').style.display = 'block';
+        }
+
+    </script>
+</body>
+</html>
