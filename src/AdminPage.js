@@ -32,7 +32,8 @@ function AdminPage() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Blog post created with ID:', data.BlogId); W
+            console.log('Blog post created with ID:', data.BlogId);
+            
             setTitle('');
             setBlogDateTime('');
             setContent1('');
@@ -60,7 +61,8 @@ function AdminPage() {
             <div className="container" style={styles.container}>
                 {activeSection === 'editHomePage' && (
                     <div id="editHomePage">
-                        <h2 style={styles.sectionTitle}>Edit Home</h2> 
+                        <h2 style={styles.sectionTitle}>Edit Home</h2>
+                        {/* Home 페이지의 내용... */}
                     </div>
                 )}
 
@@ -116,7 +118,8 @@ function AdminPage() {
                         </form>
                     </div>
                 )}
- 
+
+                {/* 나머지 섹션들도 비슷하게 추가 */}
             </div>
         </div>
     );
