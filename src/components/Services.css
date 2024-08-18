@@ -1,0 +1,31 @@
+.services {
+    padding: 50px;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.services-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.services-buttons button {
+    padding: 15px 30px;
+    background-color: #ffeb3b; /* Yellow */
+    border: 2px solid #000;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.services-buttons button:hover {
+    background-color: #fdd835; /* Darker Yellow */
+}
