@@ -39,7 +39,7 @@ function Navbar() {
                             </a>
                         </Dropdown>
                     </li>
-                    <li><Link to="/blogs" className="nav-link">Blogs</Link></li>
+                    <li><Link to="/blog" className="nav-link">Blogs</Link></li>
                     <li>
                         <Button text="Contact Us" />
                     </li>

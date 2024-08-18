@@ -30,6 +30,7 @@ app.post('/api/blogpage', (req, res) => {
   });
 });
 
+
 // EditInfoPage 
 app.post('/api/editinfopage', (req, res) => {
   const { PageName, Title, Content1, Content2, Image1, Image2 } = req.body;
