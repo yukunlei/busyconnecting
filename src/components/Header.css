@@ -60,7 +60,7 @@ header {
     font-weight: bold;
     color: #000;
     font-family: "Poppins";
-    margin-left: 20px;
+    margin-left: 30px;
     text-decoration: none;
 }
 
@@ -85,5 +85,6 @@ nav ul li a {
     border-radius: 50px;
     cursor: pointer;
     font-family: "Poppins SemiBold";
-    margin-right: 20px;
+    margin-right: 30px;
+
 }

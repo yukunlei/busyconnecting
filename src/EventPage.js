@@ -37,13 +37,13 @@ function EventPage() {
                                 description={event.Content1}
                             />
                         </div>
-
                     ))
                 ) : (
                     <p>No event posts available.</p>
                 )}
             </div>
             <div className="button-container">
+                <h2 className="txt">Want to know more?</h2>
                 <RedButton text={"Book a consultation"}/>
             </div>
             <Newsletter/>

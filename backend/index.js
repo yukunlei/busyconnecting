@@ -78,10 +78,72 @@ app.post('/api/userdata', (req, res) => {
     res.json({ UserId: this.lastID });
   });
 });
- 
+
+
+app.get('/api/blogpage', (req, res) => {
+  const query = "SELECT * FROM BlogPage ORDER BY BlogDateTime DESC";
+  db.all(query, [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ "error": err.message });
+      return;
+    }
+    res.json({
+      "message": "success",
+      "data": rows
+    });
+  });
+});
+
+
+app.get('/api/eventpage', (req, res) => {
+  const query = "SELECT * FROM EventPage ORDER BY DateTime DESC";
+  db.all(query, [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ "error": err.message });
+      return;
+    }
+    res.json({
+      "message": "success",
+      "data": rows
+    });
+  });
+});
+
+app.get('/api/homepage', (req, res) => {
+  const query = "SELECT * FROM HomePage";
+  db.all(query, [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ "error": err.message });
+      return;
+    }
+    res.json({
+      "message": "success",
+      "data": rows
+    });
+  });
+});
+
+app.get('/api/latest-events', (req, res) => {
+  const query = "SELECT * FROM EventPage ORDER BY DateTime DESC LIMIT 3";
+  db.all(query, [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ "error": err.message });
+      return;
+    }
+    res.json({
+      "message": "success",
+      "data": rows
+    });
+  });
+});
+
+
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

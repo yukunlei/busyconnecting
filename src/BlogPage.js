@@ -15,7 +15,7 @@ function BlogPage() {
         fetch('/api/blogpage')
             .then(response => response.json())
             .then(data => {
-                setBlogs(data.data); // Assuming your API returns data as { "data": rows }
+                setBlogs(data.data);
             })
             .catch(error => {
                 console.error('Error fetching blog posts:', error);
@@ -25,7 +25,7 @@ function BlogPage() {
     return (
         <div>
             <Header/>
-            <h1 className="title"> Blog</h1>
+            <h1 className="title"> Blogs</h1>
             <SearchBar placeholder={"Search Blog"} />
             <div className="blog-container">
                 {blogs.length > 0 ? (
@@ -44,6 +44,7 @@ function BlogPage() {
                 )}
             </div>
             <div className="button-container">
+                <h2 className="txt">Want to know more?</h2>
                 <RedButton text={"Book a consultation"}/>
             </div>
             <Newsletter/>
