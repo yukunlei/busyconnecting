@@ -1,15 +1,23 @@
+@font-face {
+    font-family: "Poppins";
+    src: url(./font/Poppins-SemiBold.ttf);
+}
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #f7f4cf; /* Light yellow */
+    background-color: #f7f4cf;
+    border: 3px solid black;
+    border-radius: 30px;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #000;
+    font-family: "Poppins Medium";
 }
 
 nav ul {
@@ -22,14 +30,15 @@ nav ul li a {
     text-decoration: none;
     color: #000;
     font-weight: bold;
+    font-family: "Poppins SemiBold";
 }
 
 .contact-btn {
     padding: 10px 20px;
-    background-color: #e92e38; /* Red */
+    background-color: #e92e38;
     color: white;
-    border: none;
-    border-radius: 20px;
-    font-weight: bold;
+    border: 3px solid black;
+    border-radius: 50px;
     cursor: pointer;
+    font-family: "Poppins SemiBold";
 }

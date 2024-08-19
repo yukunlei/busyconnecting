@@ -4,6 +4,10 @@
     text-align: left;
     border: 3px solid #000;
     border-radius: 10px;
+    justify-content: space-between;
+    display: flex;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 .newsletter h2 {
@@ -17,6 +21,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 40%;
 }
 
 .newsletter form input {
@@ -33,4 +38,10 @@
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.newsletter-img{
+    border: 3px solid #000;
+    height: 300px;
+    width: 50%;
 }

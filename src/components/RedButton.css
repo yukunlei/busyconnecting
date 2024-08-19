@@ -1,12 +1,17 @@
 .red-button {
     background-color: #DB0F45;
-    color: #FEFFCD;
-    border: 5px solid black;
+    color: white;
+    font-family: "Poppins SemiBold";
+    border: 3px solid black;
     padding: 12px 24px;
     font-size: 1rem;
-    border-radius: 8px;
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 35%;
+    display: inline-block;
 }
 
 .red-button:hover {

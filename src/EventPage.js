@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import "./BlogPage.css";
+import "./EventPage.css";
 import "./Global.css";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
@@ -8,39 +8,39 @@ import RedButton from "./components/RedButton";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 
-function BlogPage() {
-    const [blogs, setBlogs] = useState([]);
+function EventPage() {
+    const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        fetch('/api/blogpage')
+        fetch('/api/eventpage')
             .then(response => response.json())
             .then(data => {
-                setBlogs(data.data); // Assuming your API returns data as { "data": rows }
+                setEvents(data.data); // Assuming your API returns data as { "data": rows }
             })
             .catch(error => {
-                console.error('Error fetching blog posts:', error);
+                console.error('Error fetching event posts:', error);
             });
     }, []);
 
     return (
         <div>
             <Header/>
-            <h1 className="title"> Blog</h1>
-            <SearchBar placeholder={"Search Blog"} />
-            <div className="blog-container">
-                {blogs.length > 0 ? (
-                    blogs.map((blog) => (
-                        <div key={blog.BlogId} className="blog-post">
+            <h1 className="title"> Events</h1>
+            <SearchBar placeholder={"Search Event"} />
+            <div className="event-container">
+                {events.length > 0 ? (
+                    events.map((event) => (
+                        <div key={event.EventId} className="event-post">
                             <SmallerCard
-                                title={blog.Title}
-                                date={new Date(blog.BlogDateTime).toLocaleString()}
-                                description={blog.Content1}
+                                title={event.Title}
+                                date={new Date(event.DateTime).toLocaleString()}
+                                description={event.Content1}
                             />
                         </div>
 
                     ))
                 ) : (
-                    <p>No blog posts available.</p>
+                    <p>No event posts available.</p>
                 )}
             </div>
             <div className="button-container">
@@ -52,4 +52,4 @@ function BlogPage() {
     );
 }
 
-export default BlogPage;
+export default EventPage;

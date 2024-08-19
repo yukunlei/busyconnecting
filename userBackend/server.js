@@ -19,6 +19,20 @@ app.get('/api/blogpage', (req, res) => {
     });
 });
 
+app.get('/api/eventpage', (req, res) => {
+    const query = "SELECT * FROM EventPage ORDER BY DateTime DESC";
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            res.status(500).json({ "error": err.message });
+            return;
+        }
+        res.json({
+            "message": "success",
+            "data": rows
+        });
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

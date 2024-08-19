@@ -6,7 +6,7 @@ function AboutUs() {
         <section className="about-us">
             <h2>About Us</h2>
             <p>Busy Connecting is a renowned organization...</p>
-            <img src="path-to-founder-image.jpg" alt="Founder" />
+            <img className="founder-img" src="path-to-founder-image.jpg" alt="Founder" />
         </section>
     );
 }
