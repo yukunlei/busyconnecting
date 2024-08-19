@@ -1,8 +1,8 @@
 footer {
-    background-color: #f7f4cf; /* Light yellow */
+    background-color: #FEFFCD; /* Light yellow */
     padding: 20px;
     text-align: center;
-    border-top: 3px solid #000;
+    margin-top: 20px;
 }
 
 .social-links {

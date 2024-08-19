@@ -33,6 +33,35 @@ app.get('/api/eventpage', (req, res) => {
     });
 });
 
+app.get('/api/homepage', (req, res) => {
+    const query = "SELECT * FROM HomePage";
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            res.status(500).json({ "error": err.message });
+            return;
+        }
+        res.json({
+            "message": "success",
+            "data": rows
+        });
+    });
+});
+
+app.get('/api/latest-events', (req, res) => {
+    const query = "SELECT * FROM EventPage ORDER BY DateTime DESC LIMIT 3";
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            res.status(500).json({ "error": err.message });
+            return;
+        }
+        res.json({
+            "message": "success",
+            "data": rows
+        });
+    });
+});
+
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

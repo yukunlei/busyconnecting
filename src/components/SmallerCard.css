@@ -16,11 +16,14 @@
     border-radius: 50px;
     border: 5px solid black;
     background: white;
+    margin-left: -5px;
+    margin-top: -5px;
 }
 
 
 .smallerCard-content {
-    padding: 10px;
+    margin-left: 20px;
+    margin-top: 5px;
 }
 
 .smallerCard h3 {
@@ -30,4 +33,5 @@
 .smallerCard p {
     margin: 5px 0;
     font-size: 0.9rem;
+    font-family: "Poppins Regular", sans-serif;
 }

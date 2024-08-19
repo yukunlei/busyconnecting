@@ -2,9 +2,9 @@
     background-color: #DB0F45;
     color: white;
     font-family: "Poppins SemiBold";
-    border: 3px solid black;
+    border: 5px solid black;
     padding: 12px 24px;
-    font-size: 1rem;
+    font-size: 24px;
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -12,6 +12,7 @@
     margin-bottom: 30px;
     width: 35%;
     display: inline-block;
+
 }
 
 .red-button:hover {

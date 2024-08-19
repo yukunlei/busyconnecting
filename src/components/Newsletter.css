@@ -1,9 +1,9 @@
 .newsletter {
-    background-color: #ffeb3b; /* Yellow */
+    background-color: #FFF502; /* Yellow */
     padding: 50px;
     text-align: left;
     border: 3px solid #000;
-    border-radius: 10px;
+    border-radius: 50px;
     justify-content: space-between;
     display: flex;
     margin-left: 30px;
@@ -20,7 +20,7 @@
 .newsletter form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     width: 40%;
 }
 
@@ -32,16 +32,21 @@
 
 .newsletter form button {
     padding: 15px 30px;
-    background-color: #e92e38; /* Red */
+    background-color: #DB0F45;
     color: white;
-    border: none;
-    border-radius: 20px;
+    border: 5px solid #000;
+    border-radius: 50px;
     font-weight: bold;
     cursor: pointer;
 }
 
+.newsletter label{
+    font-family: "Poppins SemiBold";
+    font-size: 24px;
+    margin-bottom: -10px;
+}
+
 .newsletter-img{
-    border: 3px solid #000;
-    height: 300px;
-    width: 50%;
+    width: 40%;
+
 }

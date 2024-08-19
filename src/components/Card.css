@@ -15,12 +15,16 @@
     height: 191px;
     border-radius: 50px;
     border: 5px solid black;
+    margin-left: -5px;
+    margin-top: -5px;
     background: white;
 }
 
 
 .card-content {
     padding: 10px;
+    text-align: left;
+    margin-left: 10px;
 }
 
 .card h3 {
@@ -30,4 +34,5 @@
 .card p {
     margin: 5px 0;
     font-size: 0.9rem;
+    font-family: "Poppins Regular", sans-serif;
 }
