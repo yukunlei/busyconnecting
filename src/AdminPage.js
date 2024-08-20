@@ -1,5 +1,3 @@
-
-    
 import React, { useState, useEffect } from 'react';
 
 function AdminPage() {
@@ -13,7 +11,7 @@ function AdminPage() {
     const [secondTitle, setSecondTitle] = useState('');
     const [secondContent, setSecondContent] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
-    const [image, setImage] = useState(null);
+    const [ setImage] = useState(null);
 
     const handleSectionChange = (section) => {
         setActiveSection(section);
@@ -69,26 +67,31 @@ function AdminPage() {
 
     const handleHomePageSubmit = (e) => {
         e.preventDefault();
-
-        const formData = new FormData();
-        formData.append('HeaderTitle', headerTitle);
-        formData.append('HeaderContent', headerContent);
-        formData.append('SecondTitle', secondTitle);
-        formData.append('SecondContent', secondContent);
-        formData.append('Video', videoUrl);
-        if (image) formData.append('Image', image);
-
-        fetch('/api/homepage', {
-            method: 'POST',
-            body: formData,
+    
+        const homePageData = {
+            HeaderTitle: headerTitle,
+            HeaderContent: headerContent,
+            Video: videoUrl,
+            SecondTitle: secondTitle,
+            SecondContent: secondContent,
+            // 이미지 필드는 예시로 추가 가능
+        };
+    
+        fetch('http://localhost:3001/api/homepage', {  // 절대 경로로 URL 수정
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(homePageData),
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Home page updated with ID:', data.HomePageId);
-            // 필요한 경우 초기화 또는 다른 작업 수행
+            console.log('Home page updated:', data.message);
+            alert('홈페이지 정보가 성공적으로 업데이트되었습니다.');
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Error updating home page:', error);
+            alert('홈페이지 정보 업데이트 중 오류가 발생했습니다.');
         });
     };
     return (
