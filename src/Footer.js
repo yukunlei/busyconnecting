@@ -1,8 +1,8 @@
 import React from 'react';
-import FacebookIcon from './assets/images/Facebook.png';
-import InstagramIcon from './assets/images/Instagram.png';
-import LinkedInIcon from './assets/images/LinkedIn.png';
-import YouTubeIcon from './assets/images/YouTube.png';
+import FacebookIcon from './Assets/Images/Facebook.png';
+import InstagramIcon from './Assets/Images/Instagram.png';
+import LinkedInIcon from './Assets/Images/LinkedIn.png';
+import YouTubeIcon from './Assets/Images/YouTube.png';
 import './Footer.css';
 
 const Footer = () => {

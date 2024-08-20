@@ -1,0 +1,30 @@
+.content-box {
+    padding: 50px;
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 30px;
+    margin-right: 30px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.content-box h2 {
+    margin-top: 50px;
+    margin-bottom: 5px;
+}
+
+.content-box-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content-box img{
+    width: 50%;
+    margin-left: 40px;
+}
+
+.content-box p{
+    font-family: "Poppins Medium";
+    width: 70%;
+}

@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar";
 import SmallerCard from "./components/SmallerCard";
 import RedButton from "./components/RedButton";
 import Newsletter from "./components/Newsletter";
-import Footer from "./components/Footer";
+import Footer from "./Footer";
 
 function BlogPage() {
     const [blogs, setBlogs] = useState([]);

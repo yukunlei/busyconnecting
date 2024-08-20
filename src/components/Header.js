@@ -19,9 +19,9 @@ function Header() {
                         <a href="/services">Services</a>
                         {dropdownOpen && (
                             <ul className="dropdown-menu">
-                                <li><a href="/services/grant">Grant</a></li>
-                                <li><a href="/services/tender">Tender</a></li>
-                                <li><a href="/services/digital-marketing">Strategic Digital Marketing</a></li>
+                                <li><a href="/grant">Grant</a></li>
+                                <li><a href="/tender">Tender</a></li>
+                                <li><a href="/sdm">Strategic Digital Marketing</a></li>
                                 <li><a href="/event">Finding Grant and Tenders</a></li>
                             </ul>
                         )}
