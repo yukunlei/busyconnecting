@@ -1,6 +1,6 @@
 
     
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function AdminPage() {
     const [activeSection, setActiveSection] = useState('editHomePage');
@@ -8,12 +8,36 @@ function AdminPage() {
     const [blogDateTime, setBlogDateTime] = useState('');
     const [content1, setContent1] = useState('');
     const [content2, setContent2] = useState('');
+    const [headerTitle, setHeaderTitle] = useState('');
+    const [headerContent, setHeaderContent] = useState('');
+    const [secondTitle, setSecondTitle] = useState('');
+    const [secondContent, setSecondContent] = useState('');
+    const [videoUrl, setVideoUrl] = useState('');
+    const [image, setImage] = useState(null);
 
     const handleSectionChange = (section) => {
         setActiveSection(section);
     };
-
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        if (activeSection === 'editHomePage') {
+            fetch('/api/homepage')
+                .then(response => response.json())
+                .then(data => {
+                    if (data) {
+                        setHeaderTitle(data.HeaderTitle);
+                        setHeaderContent(data.HeaderContent);
+                        setSecondTitle(data.SecondTitle);
+                        setSecondContent(data.SecondContent);
+                        setVideoUrl(data.Video);
+                        // 이미지 필드는 생략, 필요시 추가 가능
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching home page data:', error);
+                });
+        }
+    }, [activeSection]);
+    const handleBlogSubmit = (e) => {
         e.preventDefault();
 
         const blogData = {
@@ -33,7 +57,6 @@ function AdminPage() {
         .then(response => response.json())
         .then(data => {
             console.log('Blog post created with ID:', data.BlogId);
-            
             setTitle('');
             setBlogDateTime('');
             setContent1('');
@@ -42,8 +65,32 @@ function AdminPage() {
         .catch(error => {
             console.error('Error:', error);
         });
-    }; 
+    };
 
+    const handleHomePageSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('HeaderTitle', headerTitle);
+        formData.append('HeaderContent', headerContent);
+        formData.append('SecondTitle', secondTitle);
+        formData.append('SecondContent', secondContent);
+        formData.append('Video', videoUrl);
+        if (image) formData.append('Image', image);
+
+        fetch('/api/homepage', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Home page updated with ID:', data.HomePageId);
+            // 필요한 경우 초기화 또는 다른 작업 수행
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
     return (
         <div style={{ display: 'flex' }}>
             <div className="sidebar" style={styles.sidebar}>
@@ -59,17 +106,73 @@ function AdminPage() {
             </div>
 
             <div className="container" style={styles.container}>
-                {activeSection === 'editHomePage' && (
+            {activeSection === 'editHomePage' && (
                     <div id="editHomePage">
-                        <h2 style={styles.sectionTitle}>Edit Home</h2>
-                        {/* Home 페이지의 내용... */}
+                        <h2 style={styles.sectionTitle}>Edit Home</h2> 
+                        <form onSubmit={handleHomePageSubmit}>
+                            <div className="form-group" style={styles.formGroup}>
+                                <label htmlFor="headerTitle" style={styles.label}>Header Title</label>
+                                <input
+                                    type="text"
+                                    value={headerTitle}
+                                    onChange={(e) => setHeaderTitle(e.target.value)}
+                                    style={styles.input}
+                                />
+                            </div>
+                            <div className="form-group" style={styles.formGroup}>
+                                <label htmlFor="headerContent" style={styles.label}>Header Content</label>
+                                <textarea
+                                    value={headerContent}
+                                    onChange={(e) => setHeaderContent(e.target.value)}
+                                    style={styles.textarea}
+                                ></textarea>
+                            </div>
+                            <div className="form-group" style={styles.formGroup}>
+                                <label htmlFor="secondTitle" style={styles.label}>Second Title</label>
+                                <input
+                                    type="text"
+                                    value={secondTitle}
+                                    onChange={(e) => setSecondTitle(e.target.value)}
+                                    style={styles.input}
+                                />
+                            </div>
+                            <div className="form-group" style={styles.formGroup}>
+                                <label htmlFor="secondContent" style={styles.label}>Second Content</label>
+                                <textarea
+                                    value={secondContent}
+                                    onChange={(e) => setSecondContent(e.target.value)}
+                                    style={styles.textarea}
+                                ></textarea>
+                            </div>
+                            <div className="form-group" style={styles.formGroup}>
+                                <label htmlFor="videoUrl" style={styles.label}>Video URL</label>
+                                <input
+                                    type="text"
+                                    value={videoUrl}
+                                    onChange={(e) => setVideoUrl(e.target.value)}
+                                    style={styles.input}
+                                />
+                            </div>
+                            <div className="form-group" style={styles.formGroup}>
+                                <label htmlFor="image" style={styles.label}>Image</label>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(e) => setImage(e.target.files[0])}
+                                    style={styles.inputFile}
+                                />
+                            </div>
+                            <div>
+                                <input type="submit" value="Update Home Page" style={styles.submitButton} />
+                            </div>
+                        </form>
                     </div>
                 )}
 
                 {activeSection === 'createBlogPage' && (
                     <div id="createBlogPage">
                         <h2 style={styles.sectionTitle}>Create Blog</h2>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleBlogSubmit}>
                             <div className="form-group" style={styles.formGroup}>
                                 <div className="form-row" style={styles.formRow}>
                                     <div className="form-item" style={styles.formItem}>

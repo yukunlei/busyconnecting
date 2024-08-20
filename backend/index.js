@@ -30,6 +30,17 @@ app.post('/api/blogpage', (req, res) => {
   });
 });
 
+app.get('/api/blogs', (req, res) => {
+  const sql = `SELECT * FROM BlogPage`;  // BlogPage 테이블에서 모든 데이터를 가져오는 쿼리
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      console.error('Database error:', err);  // 데이터베이스 오류 처리
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(rows);  // JSON 형식으로 데이터 반환
+  });
+});
+
 // EditInfoPage 
 app.post('/api/editinfopage', (req, res) => {
   const { PageName, Title, Content1, Content2, Image1, Image2 } = req.body;
@@ -41,6 +52,7 @@ app.post('/api/editinfopage', (req, res) => {
     res.json({ PageId: this.lastID });
   });
 });
+
 
 // EventPage 
 app.post('/api/eventpage', (req, res) => {
@@ -54,16 +66,39 @@ app.post('/api/eventpage', (req, res) => {
   });
 });
 
-// HomePage  
-app.post('/api/homepage', (req, res) => {
-  const { Title, HeaderText, Content2, Image1, Image2, Video } = req.body;
-  const sql = `INSERT INTO HomePage (Title, HeaderText, Content2, Image1, Image2, Video) VALUES (?, ?, ?, ?, ?, ?)`;
-  db.run(sql, [Title, HeaderText, Content2, Image1, Image2, Video], function (err) {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    res.json({ HomePageId: this.lastID });
+app.get('/api/homepage', (req, res) => {
+  const sql = `SELECT * FROM HomePage WHERE rowid = 1`;
+  db.get(sql, [], (err, row) => {
+      if (err) {
+          console.error('Database error:', err);
+          return res.status(500).json({ error: err.message });
+      }
+      console.log('Sending JSON data:', row);  // 응답으로 보내는 데이터를 로그에 출력
+      res.json(row);
   });
+});
+
+app.post('/api/homepage', upload.fields([{ name: 'Image' }]), (req, res) => {
+  try {
+      const { HeaderTitle, HeaderContent, SecondTitle, SecondContent, Video } = req.body; 
+      const image = req.files['Image'] ? req.files['Image'][0].buffer : null;
+
+      const sql = `
+          UPDATE HomePage
+          SET HeaderTitle = ?, HeaderContent = ?, SecondTitle = ?, SecondContent = ?, Video = ?, Image = ?
+          WHERE rowid = 1
+      `;
+
+      db.run(sql, [HeaderTitle, HeaderContent, SecondTitle, SecondContent, Video, image], function (err) {
+          if (err) {
+              return res.status(500).json({ error: err.message });
+          }
+          res.json({ HomePageId: 1 });
+      });
+  } catch (error) {
+      console.error('HomePage API Error:', error);
+      res.status(500).json({ error: 'An error occurred while updating the homepage.' });
+  }
 });
 
 // UserData 
