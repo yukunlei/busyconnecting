@@ -5,7 +5,7 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import Services from './components/Services';
 import AboutUs from './components/AboutUs';
-import GrantsTenders from './components/GrantsTenders';
+import AvailableBlogs from './components/AvailableBlogs';
 import Newsletter from './components/Newsletter';
 import Footer from './Footer';
 import BlogPage from "./BlogPage";
@@ -21,7 +21,6 @@ function App() {
             <Routes>
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/blog" element={<BlogPage />} />
-                <Route path="/event" element={<EventPage />} />
                 <Route path="/grant" element={<GrantPage />} />
                 <Route path="/tender" element={<TenderPage />} />
                 <Route path="/sdm" element={<SDMPage />} />
@@ -43,7 +42,7 @@ function App() {
                             <HeroSection />
                             <Services />
                             <AboutUs />
-                            <GrantsTenders />
+                            <AvailableBlogs />
                             <Newsletter />
                             <Footer />
                         </div>

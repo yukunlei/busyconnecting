@@ -22,7 +22,6 @@ function Header() {
                                 <li><a href="/grant">Grant</a></li>
                                 <li><a href="/tender">Tender</a></li>
                                 <li><a href="/sdm">Strategic Digital Marketing</a></li>
-                                <li><a href="/event">Finding Grant and Tenders</a></li>
                             </ul>
                         )}
                     </li>

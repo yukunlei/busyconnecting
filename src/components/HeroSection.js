@@ -15,36 +15,50 @@ function HeroSection() {
         fetch('/api/homepage')
             .then((response) => response.json())
             .then((data) => {
-                if (data.message === "success") {
-                    const { Title, HeaderText, Content2, Video } = data.data[0];
-                    // Convert the video blob to a URL
-                    const videoUrl = URL.createObjectURL(new Blob([Video], { type: 'video/mp4' }));
+                if (data && data.HeaderTitle) {
+                    const { HeaderTitle, HeaderContent, SecondContent, Video } = data;
 
                     setHomePageData({
-                        title: Title,
-                        headerText: HeaderText,
-                        content: Content2,
-                        videoUrl: videoUrl
+                        title: HeaderTitle,
+                        headerText: HeaderContent,
+                        content: SecondContent,
+                        videoUrl: Video // YouTube video URL
                     });
+                } else {
+                    console.error("Invalid data structure or no data available");
                 }
             })
             .catch((error) => {
                 console.error("Error fetching homepage data:", error);
             });
+
     }, []);
+
+    // Extract the video ID from the YouTube URL
+    const getYouTubeEmbedUrl = (url) => {
+        const videoId = url.split('v=')[1]?.split('&')[0];
+        return `https://www.youtube.com/embed/${videoId}`;
+    };
 
     return (
         <section className="hero">
             <div className="hero-text">
                 <h1>{homePageData.title}</h1>
-                <p className="summary">
-                    {homePageData.headerText}
-                </p>
+                <p className="summary">{homePageData.headerText}</p>
                 <button className="consultation-btn">Book a consultation</button>
             </div>
             <div className="video-placeholder">
-                {/* Render the video dynamically */}
-                {homePageData.videoUrl && <video src={homePageData.videoUrl} controls />}
+                {homePageData.videoUrl && (
+                    <iframe
+                        width="560"
+                        height="315"
+                        src={getYouTubeEmbedUrl(homePageData.videoUrl)}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                )}
             </div>
         </section>
     );

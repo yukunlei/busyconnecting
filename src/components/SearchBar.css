@@ -18,6 +18,21 @@
 
 }
 
+.search-button {
+    padding: 10px 20px; /* Add padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #ff4d4d; /* Background color */
+    color: #fff; /* Text color */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.search-button:hover {
+    background-color: #e60000; /* Darker background color on hover */
+}
+
 .search-input::placeholder {
     color: #aaa;
     font-size: 18px;

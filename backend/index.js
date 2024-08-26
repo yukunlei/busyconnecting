@@ -37,7 +37,7 @@ app.post('/api/blogpage', upload.single('Image'), (req, res) => {
   });
 });
 app.get('/api/blogs', (req, res) => {
-  const sql = `SELECT * FROM BlogPage`;
+  const sql = `SELECT * FROM BlogPage ORDER BY BlogDateTime DESC`;
   db.all(sql, [], (err, rows) => {
     if (err) {
       console.error('Database error:', err);
@@ -47,8 +47,20 @@ app.get('/api/blogs', (req, res) => {
   });
 });
 
+app.get('/api/latest-blogs', (req, res) => {
+  const sql = `SELECT * FROM BlogPage ORDER BY BlogDateTime DESC LIMIT 3`;
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(rows);
+  });
+});
+
+
 app.get('/api/homepage', (req, res) => {
-  const sql = `SELECT * FROM HomePage WHERE rowid = 1`; 
+  const sql = `SELECT * FROM HomePage WHERE rowid = 1`;
   db.get(sql, [], (err, row) => {
     if (err) {
       console.error('Database error:', err);
@@ -197,6 +209,39 @@ app.delete('/api/blogpage/:id', (req, res) => {
       return res.status(500).json({ error: err.message });
     }
     res.json({ message: 'Blog post deleted successfully' });
+  });
+});
+
+app.get('/api/businessfunding', (req, res) => {
+  const sql = `SELECT * FROM BusinessFundingPage WHERE rowid = 1`; // Adjust the SQL as needed
+  db.get(sql, [], (err, row) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(row);
+  });
+});
+
+app.get('/api/tenders', (req, res) => {
+  const sql = `SELECT * FROM TendersPage WHERE rowid = 1`; // Adjust SQL as needed
+  db.get(sql, [], (err, row) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(row);
+  });
+});
+
+app.get('/api/strategic', (req, res) => {
+  const sql = `SELECT * FROM StrategicPage WHERE rowid = 1`; // Adjust SQL as needed
+  db.get(sql, [], (err, row) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(row);
   });
 });
 
