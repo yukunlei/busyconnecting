@@ -8,7 +8,7 @@ function AvailableBlogs() {
 
     // Fetch the blog data when the component mounts
     useEffect(() => {
-        fetch('/api/latest-blogs')
+        fetch('/api/blogPage/latestBlogs')
             .then(response => response.json())
             .then(data => {
                 if (Array.isArray(data)) {

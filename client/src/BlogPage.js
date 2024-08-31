@@ -13,7 +13,7 @@ function BlogPage() {
     const [filteredBlogs, setFilteredBlogs] = useState([]);
 
     useEffect(() => {
-        fetch('/api/blogs')
+        fetch('/api/blogPage/getAllBlog')
             .then(response => response.json())
             .then(data => {
                 if (Array.isArray(data) && data.length) {

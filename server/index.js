@@ -1,5 +1,37 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const db = require('./database/db');
+
+const app = express();
+const port = 3001;
+
+// Middleware setup
+app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+
+// Routes
+app.use('/api/blogPage', require('./routes/blogRoutes'));
+app.use('/api/infoPage', require('./routes/infoRoutes'));
+app.use('/api/homepage', require('./routes/homeRoutes'));
+app.use('/api/newsletter', require('./routes/newsletterRoutes'));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+
+
+
+/*const express = require('express');
+const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -22,10 +54,9 @@ const db = new sqlite3.Database(dbPath, (err) => {
   } else {
     console.log('Connected to SQLite database');
   }
-});
- 
-// BlogPage  
-app.post('/api/blogpage', upload.single('Image'), (req, res) => {
+});*/
+// BlogPage
+/*app.post('/api/blogPage/addNewBlog', upload.single('Image'), (req, res) => {
   const { Title, BlogDateTime, Content1, Content2 } = req.body;
   const image = req.file ? req.file.buffer : null;
   const sql = "INSERT INTO BlogPage (Title, BlogDateTime, Content1, Content2, Image) VALUES (?, ?, ?, ?, ?)";
@@ -36,7 +67,7 @@ app.post('/api/blogpage', upload.single('Image'), (req, res) => {
     res.json({ BlogId: this.lastID });
   });
 });
-app.get('/api/blogs', (req, res) => {
+app.get('/api/blogPage/getAllBlog', (req, res) => {
   const sql = `SELECT * FROM BlogPage ORDER BY BlogDateTime DESC`;
   db.all(sql, [], (err, rows) => {
     if (err) {
@@ -47,7 +78,7 @@ app.get('/api/blogs', (req, res) => {
   });
 });
 
-app.get('/api/latest-blogs', (req, res) => {
+app.get('/api/blogPage/latestBlogs', (req, res) => {
   const sql = `SELECT * FROM BlogPage ORDER BY BlogDateTime DESC LIMIT 3`;
   db.all(sql, [], (err, rows) => {
     if (err) {
@@ -56,10 +87,10 @@ app.get('/api/latest-blogs', (req, res) => {
     }
     res.json(rows);
   });
-});
+});*/
 
-
-app.get('/api/homepage', (req, res) => {
+// homePage
+/*app.get('/api/homepage', (req, res) => {
   const sql = `SELECT * FROM HomePage WHERE rowid = 1`;
   db.get(sql, [], (err, row) => {
     if (err) {
@@ -84,11 +115,11 @@ app.put('/api/homepage', upload.single('Image'), (req, res) => {
     }
     res.json({ message: 'Home page updated successfully' });
   });
-});
+});*/
 
 // Edit Info 관련 엔드포인트 추가
 
-app.get('/api/infopage/:page', (req, res) => {
+/*app.get('/api/infopage/:page', (req, res) => {
   const page = req.params.page;
   let sql = '';
   console.log("page:", page);
@@ -134,12 +165,6 @@ app.put('/api/infopage/:page', upload.fields([{ name: 'image1' }, { name: 'image
     params = [title, subtitle, content, subtitle2, content2, subtitle3, content3, image1, image2, image3];
  }
 
-
-
-
-
-
-
   db.run(sql, params, function (err) {
     if (err) {
       console.error('Database error:', err);
@@ -147,11 +172,11 @@ app.put('/api/infopage/:page', upload.fields([{ name: 'image1' }, { name: 'image
     }
     res.json({ message: 'Info page updated successfully' });
   });
-});
+});*/
 
 
 // 특정 블로그 게시물 가져오기
-app.get('/api/blogpage/:id', (req, res) => {
+/*app.get('/api/blogpage/:id', (req, res) => {
   const { id } = req.params;
   console.log("Request received for blog ID:", id); // 요청 수신 로그
 
@@ -210,9 +235,9 @@ app.delete('/api/blogpage/:id', (req, res) => {
     }
     res.json({ message: 'Blog post deleted successfully' });
   });
-});
+});*/
 
-app.get('/api/businessfunding', (req, res) => {
+/*app.get('/api/businessfunding', (req, res) => {
   const sql = `SELECT * FROM BusinessFundingPage WHERE rowid = 1`; // Adjust the SQL as needed
   db.get(sql, [], (err, row) => {
     if (err) {
@@ -243,16 +268,12 @@ app.get('/api/strategic', (req, res) => {
     }
     res.json(row);
   });
-});
+});*/
 
-
-
-
-
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
-});
+});*/

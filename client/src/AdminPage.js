@@ -58,7 +58,7 @@ function AdminPage() {
     useEffect(() => {
         if (activeSection === 'editInfoPage') {
             console.log("infoPage:", infoPage);
-            fetch(`/api/infopage/${infoPage}`) 
+            fetch(`/api/infoPage/${infoPage}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data) {
@@ -81,7 +81,7 @@ function AdminPage() {
     }, [activeSection, infoPage]); 
     useEffect(() => {
         if (activeSection === 'editBlogPage') {
-            fetch('/api/blogs')
+            fetch('/api/blogPage/addNewBlog')
                 .then(response => response.json())
                 .then(data => setBlogs(data))
                 .catch(error => console.error('Error fetching blogs:', error));
@@ -100,7 +100,7 @@ function AdminPage() {
             blogData.append('Image', image);  // 이미지 파일을 FormData에 추가
         }
     
-        fetch('/api/blogpage', {
+        fetch('/api/blogPage/addNewBlog', {
             method: 'POST',
             body: blogData,
         })
@@ -177,7 +177,7 @@ function AdminPage() {
             infoPageData.append('image3', infoImage3);
         }
 
-        fetch(`/api/infopage/${infoPage}`, {
+        fetch(`/api/infoPage/${infoPage}`, {
             method: 'PUT',
             body: infoPageData,
         })
@@ -201,7 +201,7 @@ function AdminPage() {
     // 클라이언트 코드 (React)
     const handleEditBlog = (id) => {
         console.log("clicked", id); // 클릭된 ID가 출력됨
-        fetch(`http://localhost:3001/api/blogpage/${id}`)
+        fetch(`http://localhost:3001/api/blogPage/${id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -235,7 +235,7 @@ function AdminPage() {
             blogData.append('Image', image);
         }
     
-        fetch(`/api/blogpage/${selectedBlogId}`, {
+        fetch(`/api/blogPage/${selectedBlogId}`, {
             method: 'PUT',
             body: blogData,
         })
@@ -249,7 +249,7 @@ function AdminPage() {
             setContent2('');
             setImage(null);
             // Refresh blog list
-            fetch('/api/blogs')
+            fetch('/api/blogPage/getAllBlog')
                 .then(response => response.json())
                 .then(data => setBlogs(data))
                 .catch(error => console.error('Error fetching blogs:', error));
@@ -260,7 +260,7 @@ function AdminPage() {
     };
     
     const handleDeleteBlog = (id) => {
-        fetch(`/api/blogpage/${id}`, {
+        fetch(`/api/blogPage/${id}`, {
             method: 'DELETE',
         })
         .then(response => response.json())
