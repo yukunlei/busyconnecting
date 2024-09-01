@@ -81,7 +81,7 @@ function AdminPage() {
     }, [activeSection, infoPage]); 
     useEffect(() => {
         if (activeSection === 'editBlogPage') {
-            fetch('/api/blogPage/addNewBlog')
+            fetch('/api/blogPage/getAllBlog')
                 .then(response => response.json())
                 .then(data => setBlogs(data))
                 .catch(error => console.error('Error fetching blogs:', error));
