@@ -10,7 +10,6 @@ import Newsletter from './components/Newsletter';
 import Footer from './Footer';
 import BlogPage from "./BlogPage";
 import "./Global.css";
-import EventPage from "./EventPage";
 import GrantPage from "./GrantPage";
 import TenderPage from "./TenderPage";
 import SDMPage from "./SDMPage";
@@ -19,7 +18,7 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/admin" element={<AdminPage />} />
+                <Route path="/admin/*" element={<AdminPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/grant" element={<GrantPage />} />
                 <Route path="/tender" element={<TenderPage />} />
@@ -55,8 +54,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
