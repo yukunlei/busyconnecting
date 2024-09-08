@@ -4,6 +4,7 @@ import HomePageEdit from "./HomePageEdit";
 import CreateBlogPage from "./CreateBlogPage";
 import EditBlogPage from "./EditBlogPage";
 import EditInfoPage from "./EditInfoPage";
+import NewsletterPage from "./NewsletterPage"
 
 
 function AdminPage() {
@@ -15,6 +16,7 @@ function AdminPage() {
                 <Link to="create-blog" style={styles.link}>Create Blog</Link>
                 <Link to="edit-info" style={styles.link}>Info Page</Link>
                 <Link to="edit-blog" style={styles.link}>Edit Blog</Link>
+                <Link to="send-newsletter" style={styles.link}>Newsletter</Link>
             </div>
             <div className="container" style={styles.container}>
                 <Routes>
@@ -22,6 +24,7 @@ function AdminPage() {
                     <Route path="create-blog" element={<CreateBlogPage />} />
                     <Route path="edit-info" element={<EditInfoPage />} />
                     <Route path="edit-blog" element={<EditBlogPage />} />
+                    <Route path="send-newsletter" element={<NewsletterPage />} />
                 </Routes>
             </div>
         </div>
