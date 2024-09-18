@@ -7,9 +7,9 @@ import Newsletter from "./components/Newsletter";
 import Footer from "./Footer";
 import YellowBox from "./components/YellowBox";
 import YellowBox2 from "./components/YellowBox2";
-import image from './assets/images/SitReadingDoodle.svg';
+import defaultImage from './assets/images/SitReadingDoodle.svg'; // Fallback image
 import providerIMG from './assets/images/provider-logo.png';
-import yb2img from './assets/images//yb2img.svg';
+import yb2img from './assets/images/yb2img.svg';
 import Provider from "./Provider";
 
 function TenderPage() {
@@ -19,26 +19,29 @@ function TenderPage() {
         content: '',
         subtitle2: '',
         content2: '',
-        image1: ''
+        image1: defaultImage,
+        image2: defaultImage
     });
 
     useEffect(() => {
-        fetch('/api/tenders')
+        fetch('/api/infoPage/TendersPage')
             .then(response => response.json())
             .then(data => {
-                // Handle BLOB data if needed
-                const image1 = data.image1 ? URL.createObjectURL(new Blob([data.image1])) : null;
+                // Convert Base64 image data to data URLs
+                const convertToDataURL = (base64) => base64 ? `data:image/jpeg;base64,${base64}` : defaultImage;
+
                 setTenderData({
                     title: data.title,
                     subtitle: data.subtitle,
                     content: data.content,
                     subtitle2: data.subtitle2,
                     content2: data.content2,
-                    image1: image1
+                    image1: convertToDataURL(data.image1),
+                    image2: convertToDataURL(data.image2)
                 });
             })
             .catch(error => {
-                console.error('Error fetching tenders data:', error);
+                console.error('Error fetching tenders page data:', error);
             });
     }, []);
 
@@ -49,7 +52,7 @@ function TenderPage() {
             <YellowBox
                 title={tenderData.subtitle}
                 texts={tenderData.content}
-                image={image} // You might want to use tenderData.image1 here if needed
+                image={tenderData.image1} // Use dynamic image1 here
             />
             <h2 className="title">Tenders Providers</h2>
             <div className="container">
@@ -60,7 +63,7 @@ function TenderPage() {
             <YellowBox2
                 title={tenderData.subtitle2}
                 texts={tenderData.content2}
-                image={yb2img} // You might want to use a dynamic image here if needed
+                image={tenderData.image2} // Use dynamic image2 here
             />
             <div className="button-container">
                 <h2 className="txt">Want to know more?</h2>

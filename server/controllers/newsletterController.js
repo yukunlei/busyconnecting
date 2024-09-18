@@ -86,3 +86,5 @@ exports.sendNewsletter = (req, res) => {
     sendNewsletter(subject, text, html);
     res.status(200).json({ message: 'Newsletter is being sent!' });
 };
+
+

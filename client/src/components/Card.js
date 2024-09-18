@@ -1,17 +1,17 @@
 import React from 'react';
 import './Card.css';
 
-const Card = ({ title, date, description, image }) => {
+function Card({ title, date, description, image, onClick }) {
     return (
-        <div className="card">
-            <img src={image} alt={"card image"} className="card-image" />
+        <div className="card" onClick={onClick}>
+            {image && <img className="card-image" src={image} alt={title} />}
             <div className="card-content">
-                <h3>{title}</h3>
-                <p>{date}</p>
-                <p>{description}</p>
+                <h3 className="card-title">{title}</h3>
+                <p className="card-date">{date}</p>
+                <p className="card-description">{description}</p>
             </div>
         </div>
     );
-};
+}
 
 export default Card;

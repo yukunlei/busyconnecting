@@ -14,14 +14,27 @@ exports.createBlog = (req, res) => {
 
 exports.getAllBlogs = (req, res) => {
     const sql = `SELECT * FROM BlogPage ORDER BY BlogDateTime DESC`;
+
     db.all(sql, [], (err, rows) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ error: err.message });
         }
-        res.json(rows);
+
+        // Convert each BLOB image to Base64
+        const blogs = rows.map(blog => ({
+            BlogId: blog.BlogId,
+            Title: blog.Title,
+            BlogDateTime: blog.BlogDateTime,
+            Content1: blog.Content1,
+            Content2: blog.Content2,
+            Image: blog.Image ? Buffer.from(blog.Image).toString('base64') : null // Convert BLOB to Base64
+        }));
+
+        res.json(blogs);
     });
 };
+
 
 exports.latestBlogs = (req, res) => {
     const sql = `SELECT * FROM BlogPage ORDER BY BlogDateTime DESC LIMIT 3`;
@@ -30,9 +43,21 @@ exports.latestBlogs = (req, res) => {
             console.error('Database error:', err);
             return res.status(500).json({ error: err.message });
         }
-        res.json(rows);
+
+        // Process each row to convert the Image BLOB to Base64
+        const processedRows = rows.map(row => ({
+            BlogId: row.BlogId,
+            Title: row.Title,
+            BlogDateTime: row.BlogDateTime,
+            Content1: row.Content1,
+            Content2: row.Content2,
+            Image: row.Image ? Buffer.from(row.Image).toString('base64') : null // Convert BLOB to Base64
+        }));
+
+        res.json(processedRows);
     });
 };
+
 exports.getBlogById = (req, res) => {
     const { id } = req.params;
     console.log("Request received for blog ID:", id);
@@ -49,7 +74,14 @@ exports.getBlogById = (req, res) => {
             return res.status(404).json({ error: 'Blog not found' });
         }
         console.log('Data found, sending response:', row);
-        res.json(row);
+        res.json({
+            BlogId: row.BlogId,
+            Title: row.Title,
+            BlogDateTime: row.BlogDateTime,
+            Content1: row.Content1,
+            Content2: row.Content2,
+            Image: row.Image ? Buffer.from(row.Image).toString('base64') : null // Convert BLOB to Base64
+        });
     });
 };
 

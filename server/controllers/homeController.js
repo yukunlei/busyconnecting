@@ -7,7 +7,24 @@ exports.getHomePage = (req, res) => {
             console.error('Database error:', err);
             return res.status(500).json({ error: err.message });
         }
-        res.json(row);
+        if (!row) {
+            return res.status(404).json({ error: 'No data found' });
+        }
+
+        // Convert BLOB image data to Base64
+        const convertToBase64 = (blob) => blob ? Buffer.from(blob).toString('base64') : null;
+
+        // Prepare the response object
+        const response = {
+            HeaderTitle: row.HeaderTitle,
+            HeaderContent: row.HeaderContent,
+            Video: row.Video,
+            SecondTitle: row.SecondTitle,
+            SecondContent: row.SecondContent,
+            Image: convertToBase64(row.Image) // Convert BLOB to Base64
+        };
+
+        res.json(response);
     });
 };
 

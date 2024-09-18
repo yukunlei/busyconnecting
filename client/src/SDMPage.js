@@ -7,9 +7,7 @@ import Newsletter from "./components/Newsletter";
 import Footer from "./Footer";
 import YellowBox from "./components/YellowBox";
 import ContentBox from "./components/ContentBox";
-import img1 from './assets/images/SitReadingDoodle.svg';
-import img2 from './assets/images/IceCreamDoodle.svg';
-import img3 from './assets/images/holdPlant.svg';
+import defaultImage from "./assets/images/SitReadingDoodle.svg"; // Fallback image
 
 function SDMPage() {
     const [strategicData, setStrategicData] = useState({
@@ -20,19 +18,17 @@ function SDMPage() {
         content2: '',
         subtitle3: '',
         content3: '',
-        image1: '',
-        image2: '',
-        image3: ''
+        image1: defaultImage,
+        image2: defaultImage,
+        image3: defaultImage
     });
 
     useEffect(() => {
-        fetch('/api/strategic')
+        fetch('/api/infoPage/StrategicPage')
             .then(response => response.json())
             .then(data => {
-                // Handle BLOB data if needed
-                const image1 = data.image1 ? URL.createObjectURL(new Blob([data.image1])) : img1;
-                const image2 = data.image2 ? URL.createObjectURL(new Blob([data.image2])) : img2;
-                const image3 = data.image3 ? URL.createObjectURL(new Blob([data.image3])) : img3;
+                // Convert Base64 image data to data URLs
+                const convertToDataURL = (base64) => base64 ? `data:image/jpeg;base64,${base64}` : defaultImage;
 
                 setStrategicData({
                     title: data.title,
@@ -42,13 +38,13 @@ function SDMPage() {
                     content2: data.content2,
                     subtitle3: data.subtitle3,
                     content3: data.content3,
-                    image1: image1,
-                    image2: image2,
-                    image3: image3
+                    image1: convertToDataURL(data.image1),
+                    image2: convertToDataURL(data.image2),
+                    image3: convertToDataURL(data.image3)
                 });
             })
             .catch(error => {
-                console.error('Error fetching strategic data:', error);
+                console.error('Error fetching strategic page data:', error);
             });
     }, []);
 
@@ -64,12 +60,12 @@ function SDMPage() {
             <ContentBox
                 title={strategicData.subtitle2}
                 texts={strategicData.content2}
-                image={strategicData.image3}
+                image={strategicData.image2}
             />
             <YellowBox
                 title={strategicData.subtitle3}
                 texts={strategicData.content3}
-                image={strategicData.image2}
+                image={strategicData.image3}
             />
             <div className="button-container">
                 <h2 className="txt">Want to know more?</h2>

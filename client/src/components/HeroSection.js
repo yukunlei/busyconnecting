@@ -45,7 +45,7 @@ function HeroSection() {
             <div className="hero-text">
                 <h1>{homePageData.title}</h1>
                 <p className="summary">{homePageData.headerText}</p>
-                <button className="consultation-btn">Book a consultation</button>
+                <button className="consultation-btn"><a href="/appointment">Book a consultation</a></button>
             </div>
             <div className="video-placeholder">
                 {homePageData.videoUrl && (

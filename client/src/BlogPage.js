@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./BlogPage.css";
 import "./Global.css";
 import Header from "./components/Header";
@@ -11,6 +12,7 @@ import Footer from "./Footer";
 function BlogPage() {
     const [blogs, setBlogs] = useState([]);
     const [filteredBlogs, setFilteredBlogs] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('/api/blogPage/getAllBlog')
@@ -40,6 +42,10 @@ function BlogPage() {
         }
     };
 
+    const handleBlogClick = (id) => {
+        navigate(`/blog/${id}`);
+    };
+
     return (
         <div>
             <Header />
@@ -48,11 +54,12 @@ function BlogPage() {
             <div className="blog-container">
                 {filteredBlogs.length > 0 ? (
                     filteredBlogs.map((blog) => (
-                        <div key={blog.BlogId} className="blog-post">
+                        <div key={blog.BlogId} className="blog-post" onClick={() => handleBlogClick(blog.BlogId)}>
                             <SmallerCard
                                 title={blog.Title}
-                                date={new Date(blog.BlogDateTime).toLocaleString()}
+                                date={new Date(blog.BlogDateTime).toLocaleDateString()}
                                 description={blog.Content1}
+                                imageUrl={blog.Image}
                             />
                         </div>
                     ))

@@ -11,14 +11,13 @@ function AboutUs() {
         fetch('/api/homepage')
             .then((response) => response.json())
             .then((data) => {
-                if (data && data.HeaderTitle) {
+                if (data && data.SecondContent) {
                     const { SecondContent, Image } = data;
 
-                    // Convert the image BLOB to a URL
-                    let founderImageUrl = '';
-                    if (Image) {
-                        founderImageUrl = URL.createObjectURL(new Blob([Image]));
-                    }
+                    // Use Base64 data directly in the src attribute
+                    const founderImageUrl = Image
+                        ? `data:image/jpeg;base64,${Image}` // Assuming JPEG; change MIME type if needed
+                        : '';
 
                     setAboutUsData({
                         content: SecondContent,
@@ -31,14 +30,7 @@ function AboutUs() {
             .catch((error) => {
                 console.error("Error fetching about us data:", error);
             });
-
-        // Cleanup function to revoke object URLs
-        return () => {
-            if (aboutUsData.founderImageUrl) {
-                URL.revokeObjectURL(aboutUsData.founderImageUrl);
-            }
-        };
-    }, [aboutUsData.founderImageUrl]);
+    }, []);
 
     return (
         <section className="about-us">
