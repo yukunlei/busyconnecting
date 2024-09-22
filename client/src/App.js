@@ -15,6 +15,7 @@ import TenderPage from "./TenderPage";
 import SDMPage from "./SDMPage";
 import BlogDetail from './BlogDetail';
 import BookAppointmentPage from "./BookAppointmentPage";
+import ContactPage from "./ContactPage";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/tender" element={<TenderPage />} />
                 <Route path="/sdm" element={<SDMPage />} />
                 <Route path="/appointment" element={<BookAppointmentPage />} />
+                <Route path="/contact" element={<ContactPage />} />
                 <Route
                     path="*"
                     element={
@@ -38,8 +40,7 @@ function App() {
                                 <Route path="/services/strategic-digital-marketing" element={<div>Strategic Digital Marketing Page</div>} />
                                 <Route path="/services/eventpage" element={<div>Available Grants Page</div>} />
                                 <Route path="/blogpage" element={<div>Blogs Page</div>} />
-
-                                <Route path="/contact-us" element={<div>Contact Us Page</div>} />
+                                <Route path="/contact" element={<div>Contact Us Page</div>} />
                             </Routes>
 
                             <Header />

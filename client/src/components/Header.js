@@ -28,7 +28,7 @@ function Header() {
                     <li><Link to="/blog" className="nav-link">Blogs</Link></li>
                 </ul>
             </nav>
-            <button className="contact-btn">Contact Us</button>
+            <button className="contact-header-btn"><a href="/contact">Contact Us</a></button>
         </header>
     );
 }
