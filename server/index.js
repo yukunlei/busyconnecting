@@ -18,6 +18,7 @@ app.use('/api/infoPage', require('./routes/infoRoutes'));
 app.use('/api/homepage', require('./routes/homeRoutes'));
 app.use('/api/newsletter', require('./routes/newsletterRoutes'));
 app.use('/api/meeting', require('./routes/meetingRoutes'));
+app.use('/api/userData', require('./routes/userDataRoutes'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
