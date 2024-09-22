@@ -1,10 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const newsletterController = require('../controllers/newsletterController');
+const UserController = require('../controllers/userController');
 
-router.get('/categories', newsletterController.getCategories);
-router.get('/users/by-category', newsletterController.getUsersByCategory);
-router.post('/subscribe', newsletterController.subscribeUser);
-router.post('/send-newsletter', newsletterController.sendNewsletter);
+// Route to add a new user (without image upload)
+router.post('/addNewUser', UserController.createUser);
+
+// Route to get all users
+router.get('/getAllUsers', UserController.getAllUsers);
+
+// Route to get the latest users
+router.get('/latestUsers', UserController.latestUsers);
+
+// Route to get a user by ID
+router.get('/:id', UserController.getUserById);
+
+// Route to update a user by ID
+router.put('/:id', UserController.updateUserById);
+
+// Route to delete a user by ID
+router.delete('/:id', UserController.deleteUserById);
 
 module.exports = router;

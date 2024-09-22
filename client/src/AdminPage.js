@@ -18,17 +18,17 @@ function AdminPage() {
                 <Link to="edit-info" style={styles.link}>Info Page</Link>
                 <Link to="edit-blog" style={styles.link}>Edit Blog</Link>
                 <Link to="send-newsletter" style={styles.link}>Newsletter</Link>
-                <Link to="edit-userdata" style={styles.link}>User Data</Link>
+                <Link to="edit-userdata" style={styles.link}>UserData</Link>
             </div>
             <div className="container" style={styles.container}>
-                <Routes>
-                    <Route path="edit-home" element={<HomePageEdit />} />
-                    <Route path="create-blog" element={<CreateBlogPage />} />
-                    <Route path="edit-info" element={<EditInfoPage />} />
-                    <Route path="edit-blog" element={<EditBlogPage />} />
-                    <Route path="send-newsletter" element={<NewsletterPage />} />
-                    <Link to="edit-userdata" element={<UserDataPage />} />
-                </Routes>
+            <Routes>
+                <Route path="edit-home" element={<HomePageEdit />} />
+                <Route path="create-blog" element={<CreateBlogPage />} />
+                <Route path="edit-info" element={<EditInfoPage />} />
+                <Route path="edit-blog" element={<EditBlogPage />} />
+                <Route path="send-newsletter" element={<NewsletterPage />} />
+                <Route path="edit-userdata" element={<UserDataPage />} /> {/* 추가된 부분 */}
+            </Routes> 
             </div>
         </div>
     );
