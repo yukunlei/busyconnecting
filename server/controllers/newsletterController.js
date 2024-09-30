@@ -77,12 +77,12 @@ exports.subscribeUser = (req, res) => {
 };
 
 exports.sendNewsletter = (req, res) => {
-    const { subject, text, html } = req.body;
+    const { subject, text, html, recipients} = req.body;
 
-    if (!subject || !text) {
-        return res.status(400).json({ error: 'Subject, text, and HTML content are required.' });
-    }
+    // if (!subject || !text) {
+    //     return res.status(400).json({ error: 'Subject, text, and HTML content are required.' });
+    // }
 
-    sendNewsletter(subject, text, html);
+    sendNewsletter(subject, text, html, recipients);
     res.status(200).json({ message: 'Newsletter is being sent!' });
 };

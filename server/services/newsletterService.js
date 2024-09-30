@@ -11,27 +11,21 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-exports.sendNewsletter = (subject, text, html) => {
-    db.all('SELECT Email FROM Users', [], (err, rows) => {
-        if (err) {
-            console.error('Error fetching emails:', err);
-            return;
+exports.sendNewsletter = (subject, text, html, recipients) => {
+
+    const mailOptions = {
+        from: 'your-email@gmail.com',
+        to: recipients,
+        subject: subject,
+        text: text,
+        html: html
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.error('Error sending email:', error);
         }
-        const recipients = rows.map(row => row.Email);
-
-        const mailOptions = {
-            from: 'your-email@gmail.com',
-            to: recipients,
-            subject: subject,
-            text: text,
-            html: html
-        };
-
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.error('Error sending email:', error);
-            }
-            console.log('Newsletter sent: %s', info.messageId);
-        });
+        console.log('Newsletter sent: %s', info.messageId);
     });
+
 };
