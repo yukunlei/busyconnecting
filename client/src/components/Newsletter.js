@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Newsletter.css';
-import ReadingDoodle from '../assets/images/ReadingDoodle.jpg';
+import ReadingDoodle from '../assets/images/bee2.png';
 
 function Newsletter() {
     const [firstName, setFirstName] = useState('');

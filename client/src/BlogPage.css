@@ -2,11 +2,12 @@
     font-family: Poppins;
 }
 
+
+
 .blog-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    background-color: #ffeb3b;
     padding: 50px;
     text-align: left;
     border: 3px solid #000;
@@ -15,6 +16,7 @@
     margin-left: 30px;
     margin-right: 30px;
     justify-content: space-between;
+    background-color: #FFF502;
 
 }
 .title{
@@ -23,30 +25,62 @@
     text-align: center;
     font-family: "Poppins Medium";
     font-weight: bolder;
+    color: #FFF502;
 }
 .blog-post {
     border-radius: 8px;
+    justify-content: center;
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    background-color: #FFF502;
 }
 
 .button-container {
     text-align: center;
     margin-top: 60px;
     margin-bottom: 60px;
+
 }
 
 .txt{
     margin-bottom: -10px;
+    color: #FFF502;
 }
 
+/* Responsive for Tablets */
 @media (max-width: 768px) {
     .blog-container {
         grid-template-columns: repeat(2, 1fr);
+        padding: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .button-container {
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 }
 
+/* Responsive for Phones */
 @media (max-width: 480px) {
     .blog-container {
         grid-template-columns: 1fr;
+        padding-left: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        align-items: center;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .button-container {
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 }

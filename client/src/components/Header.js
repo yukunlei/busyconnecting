@@ -1,20 +1,41 @@
 import React, { useState } from 'react';
 import './Header.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
 
+    const handleAboutClick = () => {
+        // If we are on the homepage, scroll to the "About Us" section
+        if (window.location.pathname === "/") {
+            const aboutSection = document.getElementById("about-section");
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: "smooth" });
+            }
+        } else {
+            // Navigate to the homepage and then scroll to the "About Us" section
+            navigate("/");
+            setTimeout(() => {
+                const aboutSection = document.getElementById("about-section");
+                if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 100); // Delay added to ensure the page has time to render
+        }
+    };
+
     return (
         <header>
-            <div ><a className="logo" href="/">BUSYCONNECTING</a></div>
+            <div><a className="logo" href="/">BUSYCONNECTING</a></div>
             <nav>
-            <ul>
-                    <li><a href="#about">About Us</a></li>
+                <ul>
+                    {/* Use handleAboutClick for About Us link */}
+                    <li><a href="#about" onClick={handleAboutClick}>About Us</a></li>
                     <li className="dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
                         <a href="/services">Services</a>
                         {dropdownOpen && (
@@ -28,7 +49,7 @@ function Header() {
                     <li><Link to="/blog" className="nav-link">Blogs</Link></li>
                 </ul>
             </nav>
-            <button className="contact-header-btn"><a href="/contact">Contact Us</a></button>
+            <Link to="/contact" className="contact-btn">Contact Us</Link>
         </header>
     );
 }

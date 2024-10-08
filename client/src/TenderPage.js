@@ -55,7 +55,7 @@ function TenderPage() {
                 image={tenderData.image1} // Use dynamic image1 here
             />
             <h2 className="title">Tenders Providers</h2>
-            <div className="container">
+            <div className="container-provider">
                 <Provider logos={providerIMG}/>
                 <Provider logos={providerIMG}/>
                 <Provider logos={providerIMG}/>

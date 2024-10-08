@@ -129,7 +129,7 @@ function CalendarForm() {
     };
 
     return (
-        <div className="page-wrapper">
+        <div className="page-wrapper" id="calendar-form-section">
             {step === 1 ? (
                 <div className="appointment-page-container">
                     <div className="calendar-container">

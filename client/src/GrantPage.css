@@ -5,3 +5,62 @@
     font-family: "Poppins Medium";
     font-weight: bolder;
 }
+
+/* Container for Providers */
+.container-provider {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    align-items: center;     /* Center the items vertically */
+    flex-wrap: wrap;         /* Allow wrapping for multiple logos */
+    gap: 20px;               /* Add spacing between the provider boxes */
+    margin: 40px 0;          /* Add top and bottom margin */
+}
+
+/* Each provider styling */
+.container-provider .provider {
+    background-color: #2C2C2C; /* Match background for consistency */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    width: 250px;        /* Fixed width */
+    height: 150px;       /* Fixed height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive  for Tablets */
+@media (max-width: 768px) {
+    .title {
+        font-size: 28px; 
+        padding-top: 15px;
+        padding-bottom: 15px; 
+    }
+
+    .container-provider {
+        flex-direction: column; /* Stack the providers vertically */
+    }
+
+    .container-provider .provider {
+        width: 80%;   /* Take up more width on smaller screens */
+        height: 120px; /* Adjust height */
+    }
+}
+
+/* Responsive  for Phones */
+@media (max-width: 480px) {
+    .title {
+        font-size: 24px; 
+        padding-top: 10px;
+        padding-bottom: 10px; 
+    }
+
+    .container-provider {
+        flex-direction: column; /* Stack the providers vertically */
+        gap: 15px;              /* Smaller gap for phones */
+    }
+
+    .container-provider .provider {
+        width: 90%;   /* Almost full width for better readability */
+        height: 100px; /* Adjust height */
+    }
+}

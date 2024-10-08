@@ -14,20 +14,24 @@
 .yellow-box h2 {
     margin-top: 50px;
     margin-bottom: 5px;
+    background-color: #FFF502;
 }
 
 .yellow-box-content {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    background-color: #FFF502;
 }
 
 .yellow-box img{
     width: 50%;
     margin-left: 40px;
+    background-color: #FFF502;
 }
 
 .yellow-box p{
     font-family: "Poppins Medium";
     width: 70%;
+    background-color: #FFF502;
 }

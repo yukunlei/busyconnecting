@@ -18,10 +18,10 @@ import BlogDetail from './BlogDetail';
 import BookAppointmentPage from "./BookAppointmentPage";
 import ContactPage from "./ContactPage";
 
+
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // 토큰을 확인하여 로그인 상태를 설정
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -88,7 +88,7 @@ function App() {
                             <Header />
                             <HeroSection />
                             <Services />
-                            <AboutUs />
+                            <AboutUs id="about-section" />
                             <AvailableBlogs />
                             <Newsletter />
                             <Footer />

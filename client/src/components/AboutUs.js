@@ -13,12 +13,7 @@ function AboutUs() {
             .then((data) => {
                 if (data && data.SecondContent) {
                     const { SecondContent, Image } = data;
-
-                    // Use Base64 data directly in the src attribute
-                    const founderImageUrl = Image
-                        ? `data:image/jpeg;base64,${Image}` // Assuming JPEG; change MIME type if needed
-                        : '';
-
+                    const founderImageUrl = Image ? `data:image/jpeg;base64,${Image}` : '';
                     setAboutUsData({
                         content: SecondContent,
                         founderImageUrl: founderImageUrl
@@ -33,7 +28,7 @@ function AboutUs() {
     }, []);
 
     return (
-        <section className="about-us">
+        <section className="about-us" id="about-section">
             <h2>About Us</h2>
             <div className="content">
                 <p>{aboutUsData.content}</p>

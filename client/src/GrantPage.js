@@ -54,7 +54,7 @@ function GrantPage() {
                 image={grantData.image1} // Use fetched image1
             />
             <h2 className="title">Grant Providers</h2>
-            <div className="container">
+            <div className="container-provider">
                 <Provider logos={providerIMG}/>
                 <Provider logos={providerIMG}/>
                 <Provider logos={providerIMG}/>

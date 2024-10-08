@@ -1,16 +1,15 @@
+/* Header.css */
 @font-face {
     font-family: "Poppins";
     src: url(./font/Poppins-SemiBold.ttf);
 }
-
-
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #FEFFCD;
+    background-color: #1E1E1E;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
     border: none;
@@ -18,47 +17,10 @@ header {
     outline: none;
 }
 
-.dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    min-width: 200px;
-    padding: 10px 0;
-}
-
-.dropdown-menu li {
-    padding: 10px 20px;
-}
-
-.dropdown-menu li a {
-    color: #000;
-    text-decoration: none;
-    font-size: 16px;
-    font-family: "Poppins Medium";
-}
-
-.dropdown-menu li a:hover {
-    background-color: #f2f2f2;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-
 .logo {
     font-size: 20px;
     font-weight: bold;
-    color: #000;
+    color: #FFF502;
     font-family: "Poppins";
     margin-left: 30px;
     text-decoration: none;
@@ -68,23 +30,145 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    text-align: center;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #000;
+    color: #FFF502;
     font-family: "Poppins SemiBold";
     font-size: 20px;
+    text-align: center;
 }
 
-.contact-header-btn {
+/* Updated Contact Button Styling */
+.contact-btn {
     padding: 10px 20px;
-    background-color: #DB0F45;
-    color: white;
-    border: 3px solid black;
+    background-color: #DB0F45; /* Red background */
+    color: white; /* White text */
+    border: 3px solid black; /* Black border */
     border-radius: 50px;
     cursor: pointer;
     font-family: "Poppins SemiBold";
     margin-right: 30px;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for Contact Button */
+.contact-btn:hover {
+    background-color: #BF0E3B; /* Darker red on hover */
+    color: white; /* Ensure text remains white */
+    text-decoration: none; /* Keep underline removed */
+}
+
+.dropdown {
+    position: relative; /* Ensure the dropdown is positioned relative to the parent */
+}
+
+.dropdown-menu {
+    display: none; /* Hide by default */
+    position: absolute; /* Position the dropdown below the parent */
+    background-color: #1E1E1E; /* Match header background color */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    top: 100%; /* Position below the parent */
+    left: 0;
+    z-index: 1000; /* Ensure dropdown is above other content */
+    padding: 10px 0;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block; /* Show dropdown */
+}
+
+/* Dropdown Menu List Items */
+.dropdown-menu li {
+    padding: 10px 20px;
+    width: 200px; /* Set consistent width for dropdown */
+}
+
+.dropdown-menu li a {
+    color: #FFF502; /* Yellow color for dropdown links */
+    text-decoration: none; /* Remove underline */
+    font-family: "Poppins SemiBold";
+    font-size: 18px;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #333; /* Highlight background on hover */
+    color: #FFF502; /* Keep text yellow */
+    border-radius: 5px;
+}
+
+/* Override nav ul styling for dropdown */
+nav ul li {
+    position: relative;
+}
+
+
+
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+        border-bottom-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+    }
+
+    .logo {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 18px;
+    }
+
+    .contact-btn {
+        padding: 8px 16px;
+        font-size: 16px;
+        margin-right: 0;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+}
+
+/* Responsive for Phones */
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 16px;
+        margin-left: 5px;
+    }
+
+    nav ul {
+        gap: 5px;
+        margin-top: 5px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    .contact-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
 
 }

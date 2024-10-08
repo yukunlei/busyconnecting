@@ -6,7 +6,7 @@
 .grants-tenders h1 {
     font-size: 48px;
     font-weight: bold;
-    color: #000;
+    color: #FFF502;
     margin-bottom: 50px;
     width: 100%;
 
@@ -30,6 +30,7 @@
     text-decoration: none;
     color: #fff;
     font-family: "Poppins SemiBold";
+    background-color: #e92e38;
 }
 
 .all-grants-btn {

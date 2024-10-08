@@ -45,13 +45,11 @@ function HeroSection() {
             <div className="hero-text">
                 <h1>{homePageData.title}</h1>
                 <p className="summary">{homePageData.headerText}</p>
-                <button className="consultation-btn"><a href="/appointment">Book a consultation</a></button>
+                <a href="/appointment" className="consultation-btn">Book a consultation</a>
             </div>
             <div className="video-placeholder">
-                {homePageData.videoUrl && (
+            {homePageData.videoUrl && (
                     <iframe
-                        width="560"
-                        height="315"
                         src={getYouTubeEmbedUrl(homePageData.videoUrl)}
                         title="YouTube video player"
                         frameBorder="0"
