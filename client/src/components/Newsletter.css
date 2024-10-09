@@ -15,6 +15,7 @@
     font-weight: bold;
     color: #000;
     margin-bottom: 20px;
+    background-color: #FFF502;
 }
 
 .newsletter form {
@@ -22,12 +23,14 @@
     flex-direction: column;
     gap: 10px;
     width: 40%;
+    background-color: #FFF502;
 }
 
 .newsletter form input {
     padding: 10px;
     border-radius: 10px;
     border: 2px solid #000;
+    background-color: #ffffff;
 }
 
 .newsletter form button {
@@ -44,9 +47,69 @@
     font-family: "Poppins SemiBold";
     font-size: 24px;
     margin-bottom: -10px;
+    background-color: #FFF502;
 }
 
 .newsletter-img{
     width: 40%;
 
+}
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .newsletter {
+        flex-direction: column;
+        align-items: center; 
+        padding: 30px;
+        border-radius: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .newsletter h2 {
+        font-size: 24px; 
+        text-align: center; 
+    }
+
+    .newsletter form {
+        width: 80%; 
+    }
+
+    .newsletter-img {
+        width: 70%; 
+        margin-top: 20px;
+    }
+}
+
+/* Responsive for Phones */
+@media (max-width: 480px) {
+    .newsletter {
+        padding: 20px;
+        border-radius: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .newsletter h2 {
+        font-size: 20px; 
+        text-align: center;
+    }
+
+    .newsletter form {
+        width: 100%; 
+    }
+
+    .newsletter form input {
+        padding: 8px; 
+    }
+
+    .newsletter form button {
+        padding: 10px 20px; 
+        font-size: 16px;
+    }
+
+    .newsletter-img {
+        width: 100%; 
+        margin-top: 20px;
+    }
 }

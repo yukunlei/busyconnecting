@@ -8,15 +8,21 @@
     text-align: center;
 }
 
+.service-link{
+    text-decoration: none;
+    color: #000;
+    background-color: #FFF502;
+}
+
 .services h2 {
     font-size: 48px;
-    color: #000;
+    color: #FFF502;
     margin-bottom: 30px;
     font-family: "Poppins";
 
 }
 
-.container {
+.container-service {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,7 +43,6 @@
     gap: 20px;
     width: 100%;
     height: auto;
-    margin-right: 100px;
 }
 
 .services-buttons button {
@@ -56,4 +61,52 @@
 
 .services-buttons button:hover {
     background-color: #fdd835; /* Darker Yellow */
+}
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .services {
+        padding: 30px;
+    }
+
+    .services h2 {
+        font-size: 36px;
+    }
+
+    .container-service {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .services-img {
+        margin-left: 0;
+        max-width: 80%;
+    }
+
+    .services-buttons button {
+        padding: 20px 20px;
+        font-size: 24px;
+    }
+}
+
+/* Responsive for Phones */
+@media (max-width: 480px) {
+    .services {
+        padding: 20px;
+    }
+
+    .services h2 {
+        font-size: 28px;
+    }
+
+    .container {
+        gap: 30px;
+    }
+
+    .services-buttons button {
+        padding: 15px 15px;
+        font-size: 20px;
+        max-width: 90%;
+    }
 }

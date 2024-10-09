@@ -1,0 +1,51 @@
+/* Scoped Contact Buttons Styling */
+.contact-section .contact-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1E1E1E; /* Dark background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Scoped contact button styling */
+.contact-section .contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #FFF502; /* Yellow button color */
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    width: 250px; /* Fixed width for social buttons */
+    border: 2px solid black;
+    transition: all 0.3s ease;
+}
+
+.contact-section .contact-btn img {
+    width: 30px;
+    margin-right: 15px;
+}
+
+.contact-section .contact-btn span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.contact-section .contact-btn:hover {
+    transform: scale(1.05);
+    background-color: #DB0F45;
+    color: white;
+
+}
+
+/* Ensure no image background for social icons */
+.contact-section .email-btn img,
+.contact-section .facebook-btn img,
+.contact-section .linkedin-btn img,
+.contact-section .youtube-btn img,
+.contact-section .instagram-btn img {
+    background-color: transparent;
+}

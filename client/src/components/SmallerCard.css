@@ -25,14 +25,70 @@
 .smallerCard-content {
     margin-left: 20px;
     margin-top: 5px;
+    background-color: #FFEB3B;
 }
 
 .smallerCard h3 {
     margin: 0 0 5px;
+    background-color: #FFEB3B;
 }
 
 .smallerCard p {
     margin: 5px 0;
     font-size: 0.9rem;
     font-family: "Poppins Regular", sans-serif;
+    background-color: #FFEB3B;
+}
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .smallerCard {
+        width: 250px;
+        height: 340px;
+    }
+
+    .smallerCard-image {
+        width: 250px;
+        height: 160px;
+        border-radius: 40px; 
+    }
+
+    .smallerCard-content {
+        margin-left: 15px;
+    }
+
+    .smallerCard h3 {
+        font-size: 1.1rem;
+    }
+
+    .smallerCard p {
+        font-size: 0.85rem; 
+    }
+}
+
+/* Responsive for Phones */
+@media (max-width: 480px) {
+    .smallerCard {
+        width: 200px;
+        height: 280px;
+        border-radius: 30px;
+    }
+
+    .smallerCard-image {
+        width: 200px;
+        height: 140px;
+        border-radius: 30px;
+    }
+
+    .smallerCard-content {
+        margin-left: 10px;
+    }
+
+    .smallerCard h3 {
+        font-size: 1rem;
+    }
+
+    .smallerCard p {
+        font-size: 0.8rem; 
+    }
 }

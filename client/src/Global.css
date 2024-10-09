@@ -1,5 +1,8 @@
 .App{
-    background-color: #FEFFCD
+    background-color: #1E1E1E;
 }
 
+body {
+    background-color: #1E1E1E; /* Set background color for entire page */
+}
 

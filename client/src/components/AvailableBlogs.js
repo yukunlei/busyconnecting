@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './AvailableBlogs.css';
 import Card from "./Card";
 
 function AvailableBlogs() {
-    // State to hold the blog data
     const [blogs, setBlogs] = useState([]);
+    const navigate = useNavigate(); // Initialize useNavigate
 
-    // Fetch the blog data when the component mounts
     useEffect(() => {
         fetch('/api/blogPage/latestBlogs')
             .then(response => response.json())
@@ -22,9 +22,12 @@ function AvailableBlogs() {
             });
     }, []);
 
-    // Function to convert BLOB to URL if needed
-    const getImageUrl = (blob) => {
-        return blob ? URL.createObjectURL(new Blob([blob])) : '';
+    const getImageUrl = (base64) => {
+        return base64 ? `data:image/jpeg;base64,${base64}` : ''; // Adjust MIME type if necessary
+    };
+
+    const handleCardClick = (id) => {
+        navigate(`/blog/${id}`); // Navigate to the BlogDetail page with the blog ID
     };
 
     return (
@@ -33,11 +36,12 @@ function AvailableBlogs() {
             <div className="card-container">
                 {blogs.map((blog) => (
                     <Card
-                        key={blog.BlogId} // Use blog.BlogId
+                        key={blog.BlogId}
                         title={blog.Title}
                         date={new Date(blog.BlogDateTime).toLocaleString()}
                         description={blog.Content1}
-                        image={getImageUrl(blog.Image)} // Convert BLOB to URL if necessary
+                        image={getImageUrl(blog.Image)}
+                        onClick={() => handleCardClick(blog.BlogId)} // Add onClick handler
                     />
                 ))}
             </div>

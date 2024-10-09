@@ -1,0 +1,72 @@
+/* Center the login container on the page */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f4f4;
+}
+
+/* Style the login card */
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Style the heading */
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style the login form inputs */
+.login-input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Style the login button */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFF502;
+    border: none;
+    color: black;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Add hover effect to button */
+.login-button:hover {
+    background-color: #E5E500;
+}
+
+/* Style the error message */
+.error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Responsive styling for mobile */
+@media (max-width: 600px) {
+    .login-card {
+        padding: 30px;
+    }
+
+    .login-button {
+        font-size: 14px;
+    }
+}

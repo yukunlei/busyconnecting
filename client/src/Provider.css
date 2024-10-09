@@ -13,3 +13,35 @@
     width: 555px;
     height: 292px;
 }
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .provider-section {
+        width: 450px;
+        height: 240px;
+        padding-left: 0px;
+    }
+
+    .provider-logo img {
+        width: 450px;
+        height: 240px;
+        padding-left: 0px;
+    }
+}
+
+/* Responsive for Phones */
+@media (max-width: 480px) {
+    .provider-section {
+        width: 300px;
+        height: 160px;
+        border-radius: 30px;
+        padding-left: 0px;
+    }
+
+    .provider-logo img {
+        width: 300px;
+        height: 160px;
+        border-radius: 30px;
+        padding-left: 0px;
+    }
+}

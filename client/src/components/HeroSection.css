@@ -15,6 +15,7 @@
     font-size: 36px;
     font-weight: bold;
     color: #000;
+    background-color: #FFF502;
 }
 
 .hero p {
@@ -23,29 +24,134 @@
     margin: 20px 0;
     width: 70%;
     font-family: "Poppins Medium";
+    background-color: #FFF502;
 }
 
 .consultation-btn {
+    display: inline-block;
     padding: 15px 30px;
-    background-color: #DB0F45;
-    color: white;
+    background-color: #DB0F45; /* Button background color */
+    color: white; /* Button text color */
     border: 3px solid #000;
     border-radius: 30px;
     cursor: pointer;
     font-family: "Poppins SemiBold";
+    text-decoration: none; /* Remove underline from the entire button */
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Specific anchor tag styling */
+.consultation-btn a {
+    color: inherit; /* Inherit the color from parent */
+    text-decoration: none; /* Remove underline */
+    font-family: inherit;
+}
+
+.consultation-btn a:hover {
+    color: inherit; /* Ensure text color remains the same on hover */
+}
+
+/* Button hover effect */
+.consultation-btn:hover {
+    background-color: #BF0E3B; /* Darker red on hover */
+    color: white; /* Ensure text color remains white */
+    text-decoration: none; /* Ensure underline is removed on hover */
 }
 
 .video-placeholder {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 60%;
-    height: 300px;
-    border: 3px solid #000;
-    background-color: #d3d3d3;
-    border-radius: 20px;
+    width: 100%; /* Increase width */
+    height: 350px; /* Increase height */
+    display: flex;
+    justify-content: center; /* Center the video */
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Ensure the iframe takes full space of the container */
+.video-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px; /* Optional: Round the video edges */
 }
 
 .hero-text{
     margin-top: 50px;
     margin-bottom: 50px;
+    background-color: #FFF502;
+}
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 30px;
+        border-radius: 40px; 
+        margin-left: 20px;
+        margin-right: 20px;
+        
+    }
+
+    .hero h1 {
+        font-size: 28px; 
+        background-color: #FFF502;
+    }
+
+    .hero p {
+        font-size: 18px;
+        width: 100%; 
+        background-color: #FFF502;
+    }
+
+    .consultation-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .video-placeholder {
+        width: 100%; /* Adjust width for tablets */
+        height: 300px; /* Adjust height for tablets */
+    }
+
+    .hero-text {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+
+/* Responsive for Phones */
+@media (max-width: 480px) {
+    .hero {
+        padding: 20px;
+        border-radius: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .hero h1 {
+        font-size: 24px; 
+    }
+
+    .hero p {
+        font-size: 16px;
+        width: 100%; 
+        text-align: center; 
+    }
+
+    .consultation-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 20px;
+    }
+
+    .video-placeholder {
+        width: 100%; /* Full width for small screens */
+        height: 250px; /* Adjust height for small screens */
+    }
+
+    .hero-text {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }

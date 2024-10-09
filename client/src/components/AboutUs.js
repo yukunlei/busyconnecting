@@ -11,15 +11,9 @@ function AboutUs() {
         fetch('/api/homepage')
             .then((response) => response.json())
             .then((data) => {
-                if (data && data.HeaderTitle) {
+                if (data && data.SecondContent) {
                     const { SecondContent, Image } = data;
-
-                    // Convert the image BLOB to a URL
-                    let founderImageUrl = '';
-                    if (Image) {
-                        founderImageUrl = URL.createObjectURL(new Blob([Image]));
-                    }
-
+                    const founderImageUrl = Image ? `data:image/jpeg;base64,${Image}` : '';
                     setAboutUsData({
                         content: SecondContent,
                         founderImageUrl: founderImageUrl
@@ -31,17 +25,10 @@ function AboutUs() {
             .catch((error) => {
                 console.error("Error fetching about us data:", error);
             });
-
-        // Cleanup function to revoke object URLs
-        return () => {
-            if (aboutUsData.founderImageUrl) {
-                URL.revokeObjectURL(aboutUsData.founderImageUrl);
-            }
-        };
-    }, [aboutUsData.founderImageUrl]);
+    }, []);
 
     return (
-        <section className="about-us">
+        <section className="about-us" id="about-section">
             <h2>About Us</h2>
             <div className="content">
                 <p>{aboutUsData.content}</p>
