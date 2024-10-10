@@ -6,3 +6,30 @@ body {
     background-color: #1E1E1E; /* Set background color for entire page */
 }
 
+@font-face {
+    font-family: "Poppins-SemiBold";
+    src: url(./components/font/Poppins-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./components/font/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Poppins Medium";
+    src: url(./components/font/Poppins-Medium.ttf);
+}
+
+@font-face {
+    font-family: "Poppins Regular";
+    src: url(./components/font/Poppins-Regular.ttf);
+}
+
+h1{
+    font-family: Poppins;
+}
+
+h2{
+    font-family: Poppins;
+}

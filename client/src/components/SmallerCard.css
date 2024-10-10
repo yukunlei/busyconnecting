@@ -31,12 +31,14 @@
 .smallerCard h3 {
     margin: 0 0 5px;
     background-color: #FFEB3B;
+    font-family: "Poppins Medium";
+
 }
 
 .smallerCard p {
     margin: 5px 0;
     font-size: 0.9rem;
-    font-family: "Poppins Regular", sans-serif;
+    font-family: "Poppins Regular";
     background-color: #FFEB3B;
 }
 

@@ -34,7 +34,8 @@ function BlogDetail() {
         <div>
             <Header/>
             <div className="wrapper">
-                <h1>{blog.Title}</h1>
+                <h1 style={{ color: "#FFF502" }} className="blog-title">{blog.Title}</h1>
+
                 <div className="blog-detail">
                     {blog.Image && (
                         <img className="imageBlog" src={`data:image/jpeg;base64,${blog.Image}`} alt={blog.Title}/>
