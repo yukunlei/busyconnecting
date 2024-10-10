@@ -4,37 +4,44 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [isNavOpen, setIsNavOpen] = useState(false); // State to manage mobile view menu
+
     const navigate = useNavigate();
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
 
+    const toggleNav = () => {
+        setIsNavOpen(!isNavOpen); // Toggle the navigation menu
+    };
+
     const handleAboutClick = () => {
-        // If we are on the homepage, scroll to the "About Us" section
         if (window.location.pathname === "/") {
             const aboutSection = document.getElementById("about-section");
             if (aboutSection) {
                 aboutSection.scrollIntoView({ behavior: "smooth" });
             }
         } else {
-            // Navigate to the homepage and then scroll to the "About Us" section
             navigate("/");
             setTimeout(() => {
                 const aboutSection = document.getElementById("about-section");
                 if (aboutSection) {
                     aboutSection.scrollIntoView({ behavior: "smooth" });
                 }
-            }, 100); // Delay added to ensure the page has time to render
+            }, 100);
         }
     };
 
     return (
         <header>
             <div><a className="logo" href="/">BUSYCONNECTING</a></div>
-            <nav>
+            {/* Add a button to toggle the menu */}
+            <button className="nav-toggle" onClick={toggleNav}>
+                ☰
+            </button>
+            <nav className={`nav-menu ${isNavOpen ? "open" : ""}`}>
                 <ul>
-                    {/* Use handleAboutClick for About Us link */}
                     <li><a href="#about" onClick={handleAboutClick}>About Us</a></li>
                     <li className="dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
                         <a href="/services">Services</a>

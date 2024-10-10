@@ -18,6 +18,7 @@
     justify-content: space-between;
     background-color: #FFF502;
 
+
 }
 .title{
     padding-top: 20px;
@@ -49,7 +50,7 @@
 /* Responsive for Tablets */
 @media (max-width: 768px) {
     .blog-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         padding: 30px;
         margin-left: 20px;
         margin-right: 20px;

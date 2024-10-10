@@ -7,9 +7,7 @@ header {
     background-color: #1E1E1E;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-    outline: none;
 }
 
 .logo {
@@ -99,12 +97,26 @@ nav ul li a {
     border-radius: 5px;
 }
 
-/* Override nav ul styling for dropdown */
-nav ul li {
-    position: relative;
+nav {
+    display: flex;
+    align-items: center;
 }
 
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
 
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #FFF502;
+    font-size: 20px;
+}
 
 
 /* Responsive for Tablets */
@@ -130,6 +142,32 @@ nav ul li {
     nav ul li a {
         font-size: 18px;
     }
+    .nav-menu {
+        display: none; /* Hide by default */
+        flex-direction: column; /* Stack menu items vertically */
+        position: absolute;
+        top: 70px; /* Position below the header */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust to center the menu */
+        background-color: #1E1E1E;
+        width: 250px; /* Set a fixed width */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .nav-menu.open {
+        display: flex; /* Show menu when the 'open' class is applied */
+    }
+
+    .nav-toggle {
+        display: block; /* Show menu toggle button */
+        font-size: 24px;
+        color: #FFF502;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
 
     .contact-btn {
         padding: 8px 16px;
@@ -139,6 +177,12 @@ nav ul li {
         justify-content: center;
     }
 
+}
+
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none;
+    }
 }
 
 /* Responsive for Phones */
