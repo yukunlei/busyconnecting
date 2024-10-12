@@ -7,6 +7,7 @@ function UserDataPage() {
     const [categoryId, setCategoryId] = useState('');
     const [dateOfJoining, setDateOfJoining] = useState('');
     const [users, setUsers] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [editUserId, setEditUserId] = useState(null);
 
     useEffect(() => {
@@ -14,6 +15,11 @@ function UserDataPage() {
             .then(response => response.json())
             .then(data => setUsers(data))
             .catch(error => console.error('Error fetching users:', error));
+
+        fetch('/api/userData/getCategories')
+            .then(response => response.json())
+            .then(data => setCategories(data))
+            .catch(error => console.error('Error fetching categories:', error));
     }, []);
 
     const handleUserSubmit = (e) => {
@@ -111,13 +117,19 @@ function UserDataPage() {
                     />
                 </div>
                 <div style={styles.formGroup}>
-                    <label>Category ID</label>
-                    <input
-                        type="number"
+                    <label>Category</label>
+                    <select
                         style={styles.input}
                         value={categoryId}
                         onChange={e => setCategoryId(e.target.value)}
-                    />
+                    >
+                        <option value="">Select Category</option>
+                        {categories.map(category => (
+                            <option key={category.CategoryId} value={category.CategoryId}>
+                                {category.CategoryName}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div style={styles.formGroup}>
                     <label>Date of Joining</label>
@@ -140,7 +152,7 @@ function UserDataPage() {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
-                        <th>Category ID</th>
+                        <th>Category Name</th>
                         <th>Date of Joining</th>
                         <th>Actions</th>
                     </tr>
@@ -151,7 +163,7 @@ function UserDataPage() {
                             <td>{user.FirstName}</td>
                             <td>{user.LastName}</td>
                             <td>{user.Email}</td>
-                            <td>{user.CategoryId}</td>
+                            <td>{user.CategoryName}</td>
                             <td>{user.DateOfJoining}</td>
                             <td>
                                 <button onClick={() => handleEdit(user)} style={styles.editButton}>Edit</button>

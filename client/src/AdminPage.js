@@ -40,7 +40,7 @@ function AdminPage({ onLogout }) {
                 <Link to="edit-info">Info Page</Link>
                 <Link to="edit-blog">Edit Blog</Link>
                 <Link to="send-newsletter">Newsletter</Link>
-                <Link to="edit-userdata">UserData</Link>
+                <Link to="edit-userdata">User Data</Link>
                 <button onClick={handleLogout}>Logout</button>
                 <button onClick={handleAddUser}>Add Staff</button>
             </div>

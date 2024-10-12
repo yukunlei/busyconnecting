@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/userController');
 
+// Route to get all categories
+router.get('/getCategories', UserController.getAllCategories);
+
 // Route to add a new user (without image upload)
 router.post('/addNewUser', UserController.createUser);
 
@@ -19,5 +22,6 @@ router.put('/:id', UserController.updateUserById);
 
 // Route to delete a user by ID
 router.delete('/:id', UserController.deleteUserById);
+
 
 module.exports = router;

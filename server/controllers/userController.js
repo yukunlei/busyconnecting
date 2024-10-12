@@ -15,7 +15,10 @@ exports.createUser = (req, res) => {
 
 // Get all users
 exports.getAllUsers = (req, res) => {
-    const sql = `SELECT * FROM Users ORDER BY DateOfJoining DESC`;
+    const sql = `SELECT Users.UserId, Users.FirstName, Users.LastName, Users.Email, Category.CategoryName, Users.DateOfJoining
+        FROM Users
+        JOIN Category ON Users.CategoryId = Category.CategoryId
+        ORDER BY Users.DateOfJoining DESC`;
 
     db.all(sql, [], (err, rows) => {
         if (err) {
@@ -85,3 +88,18 @@ exports.deleteUserById = (req, res) => {
         res.json({ message: 'User deleted successfully' });
     });
 };
+
+
+exports.getAllCategories = (req, res) => {
+    const sql = `SELECT CategoryId, CategoryName FROM Category ORDER BY CategoryName`;
+
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: err.message });
+        }
+        res.json(rows);  // Ensure that it returns the correct format
+    });
+};
+
+

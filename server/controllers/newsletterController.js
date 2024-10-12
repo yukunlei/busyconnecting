@@ -54,7 +54,7 @@ exports.subscribeUser = (req, res) => {
     const checkUserQuery = `SELECT * FROM Users WHERE Email = ?`;
     const insertUserQuery = `
         INSERT INTO Users (FirstName, LastName, Email, CategoryId, DateOfJoining)
-        VALUES (?, ?, ?, 1, date('now'))
+        VALUES (?, ?, ?, 4, date('now'))
     `;
 
     db.get(checkUserQuery, [email], (err, row) => {
